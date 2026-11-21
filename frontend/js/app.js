@@ -146,33 +146,53 @@ function saveMockData() {
 // API CLIENT LAYER
 // ============================================================
 const BoltApi = {
+  _connPromise: null,
+
   // Test connection to backend
   async checkConnection() {
-    try {
-      const res = await fetch(`${BOLT_CONFIG.API_BASE}/mode`, {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' },
-        signal: AbortSignal.timeout(2000)
-      });
-      if (res.ok) {
-        const data = await res.json();
-        BoltState.isBackendConnected = true;
-        BoltState.currentMode = data.mode || 'SAFE';
-        return true;
+    this._connPromise = (async () => {
+      try {
+        const res = await fetch(`${BOLT_CONFIG.API_BASE}/mode`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          signal: AbortSignal.timeout(2500)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          BoltState.isBackendConnected = true;
+          BoltState.currentMode = data.mode || 'SAFE';
+          notifyStateChanged();
+          return true;
+        }
+      } catch (e) {
+        // Backend offline, fallback to standalone simulation mode
       }
-    } catch (e) {
-      // Backend offline, fallback to standalone simulation mode
+      BoltState.isBackendConnected = false;
+      return false;
+    })();
+    return this._connPromise;
+  },
+
+  async ensureConnected() {
+    if (!this._connPromise) {
+      await this.checkConnection();
+    } else {
+      await this._connPromise;
     }
-    BoltState.isBackendConnected = false;
-    return false;
+    return BoltState.isBackendConnected;
   },
 
   // GET Accounts
   async getAccounts() {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       try {
         const res = await fetch(`${BOLT_CONFIG.API_BASE}/accounts`);
-        if (res.ok) return await res.json();
+        if (res.ok) {
+          const accs = await res.json();
+          BoltState.accounts = accs;
+          return accs;
+        }
       } catch (e) { console.warn('Falling back to local account data', e); }
     }
     return [...MockData.accounts];
@@ -180,6 +200,7 @@ const BoltApi = {
 
   // GET Single Account
   async getAccount(accountId) {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       try {
         const res = await fetch(`${BOLT_CONFIG.API_BASE}/accounts/${accountId}`);
@@ -189,8 +210,46 @@ const BoltApi = {
     return MockData.accounts.find(a => a.accountNumber === accountId || a.id == accountId) || MockData.accounts[0];
   },
 
+  // POST Create Account
+  async createAccount(accountNumber, customerName, initialBalance = 0) {
+    await this.ensureConnected();
+    const balanceNum = parseFloat(initialBalance) || 0;
+    if (BoltState.isBackendConnected) {
+      const res = await fetch(`${BOLT_CONFIG.API_BASE}/accounts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          accountNumber,
+          customerName,
+          initialBalance: balanceNum,
+          balance: balanceNum
+        })
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'Failed to create account');
+      }
+      return await res.json();
+    }
+    // Offline simulation
+    const existing = MockData.accounts.find(a => a.accountNumber === accountNumber);
+    if (existing) throw new Error(`Account ${accountNumber} already exists`);
+    const newAcc = {
+      id: MockData.accounts.length + 1,
+      accountNumber,
+      customerName,
+      balance: balanceNum,
+      accountStatus: 'ACTIVE',
+      version: 0
+    };
+    MockData.accounts.push(newAcc);
+    saveMockData();
+    return newAcc;
+  },
+
   // GET Dashboard Summary
   async getDashboardSummary() {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       try {
         const res = await fetch(`${BOLT_CONFIG.API_BASE}/dashboard/summary`);
@@ -231,6 +290,7 @@ const BoltApi = {
 
   // GET Transactions
   async getTransactions() {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       try {
         const res = await fetch(`${BOLT_CONFIG.API_BASE}/transactions`);
@@ -242,6 +302,7 @@ const BoltApi = {
 
   // GET Execution Mode
   async getExecutionMode() {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       try {
         const res = await fetch(`${BOLT_CONFIG.API_BASE}/mode`);
@@ -257,6 +318,7 @@ const BoltApi = {
 
   // PUT Execution Mode (SAFE / UNSAFE)
   async setExecutionMode(mode) {
+    await this.ensureConnected();
     BoltState.currentMode = mode;
     if (BoltState.isBackendConnected) {
       try {
@@ -278,6 +340,7 @@ const BoltApi = {
 
   // POST Deposit
   async deposit(accountNumber, amount, channel = 'ONLINE') {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       const res = await fetch(`${BOLT_CONFIG.API_BASE}/transactions/deposit`, {
         method: 'POST',
@@ -315,6 +378,7 @@ const BoltApi = {
 
   // POST Withdrawal
   async withdraw(accountNumber, amount, channel = 'ONLINE') {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       const res = await fetch(`${BOLT_CONFIG.API_BASE}/transactions/withdraw`, {
         method: 'POST',
@@ -355,6 +419,7 @@ const BoltApi = {
 
   // POST Transfer
   async transfer(sourceAccountNumber, destinationAccountNumber, amount, channel = 'ONLINE') {
+    await this.ensureConnected();
     if (BoltState.isBackendConnected) {
       const res = await fetch(`${BOLT_CONFIG.API_BASE}/transactions/transfer`, {
         method: 'POST',

@@ -61,12 +61,13 @@ function initMobileDrawer() {
 
 // Highlight Current Page in Sidebar
 function highlightActiveNav() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  if (!currentPath || !currentPath.endsWith('.html')) currentPath = 'index.html';
   const navLinks = document.querySelectorAll('.nav-item a');
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    if (href === currentPath || (currentPath === 'index.html' && (href === 'index.html' || href === './'))) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');

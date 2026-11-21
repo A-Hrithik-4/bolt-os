@@ -221,6 +221,27 @@ function initFormHandlers() {
       }
     });
   }
+
+  // Create Account Form
+  const createAccountForm = document.getElementById('createAccountForm');
+  if (createAccountForm) {
+    createAccountForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const accountNumber = document.getElementById('newAccNumber').value;
+      const customerName = document.getElementById('newCustomerName').value;
+      const initialBalance = document.getElementById('newInitialBalance').value;
+
+      try {
+        const acc = await BoltApi.createAccount(accountNumber, customerName, initialBalance);
+        closeModal('createAccountModal');
+        createAccountForm.reset();
+        showToast(`Account #${acc.accountNumber} created for ${acc.customerName}`, 'success');
+        refreshPageData();
+      } catch (err) {
+        showToast(err.message, 'error');
+      }
+    });
+  }
 }
 
 function refreshPageData() {
