@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initModeToggles() {
   const toggleButtons = document.querySelectorAll('.mode-toggle-btn');
   const indicatorPills = document.querySelectorAll('.mode-indicator-pill');
+  const appleToggleSwitches = document.querySelectorAll('.mode-toggle-switch-wrapper');
 
   updateModeUI(BoltState.currentMode);
 
@@ -119,18 +120,32 @@ function initModeToggles() {
     });
   });
 
-  indicatorPills.forEach(pill => {
-    pill.addEventListener('click', async () => {
-      const nextMode = BoltState.currentMode === 'SAFE' ? 'UNSAFE' : 'SAFE';
+  const handleModeToggle = async () => {
+    const nextMode = BoltState.currentMode === 'SAFE' ? 'UNSAFE' : 'SAFE';
+    try {
       await BoltApi.setExecutionMode(nextMode);
       updateModeUI(nextMode);
-      showToast(`Switched to ${nextMode} execution mode`, nextMode === 'SAFE' ? 'success' : 'error');
-    });
+      if (nextMode === 'SAFE') {
+        showToast('✅ SAFE Mode Enabled — ReentrantLock Active', 'success');
+      } else {
+        showToast('⚠️ UNSAFE Mode Enabled — Synchronization OFF (Race Conditions Active)', 'error');
+      }
+    } catch (e) {
+      showToast(`Failed to switch mode: ${e.message}`, 'error');
+    }
+  };
+
+  indicatorPills.forEach(pill => {
+    pill.addEventListener('click', handleModeToggle);
+  });
+
+  appleToggleSwitches.forEach(sw => {
+    sw.addEventListener('click', handleModeToggle);
   });
 }
 
 function updateModeUI(mode) {
-  // Update toggle buttons in dashboard hero
+  // Update toggle buttons in dashboard hero if any exist
   document.querySelectorAll('.mode-toggle-btn').forEach(btn => {
     if (btn.dataset.mode === mode) {
       btn.classList.add('active');
@@ -141,13 +156,26 @@ function updateModeUI(mode) {
     }
   });
 
-  // Update topbar pills
+  // Update topbar pills if any exist
   document.querySelectorAll('.mode-indicator-pill').forEach(pill => {
     pill.className = `mode-indicator-pill ${mode.toLowerCase()}`;
     pill.innerHTML = `
       <span class="mode-indicator-dot"></span>
       <span class="mode-text">${mode} MODE</span>
     `;
+  });
+
+  // Update Apple toggle switches
+  document.querySelectorAll('.mode-toggle-switch-wrapper').forEach(wrapper => {
+    const label = wrapper.querySelector('.mode-toggle-label');
+    const sw = wrapper.querySelector('.apple-switch');
+    if (label) {
+      label.className = `mode-toggle-label ${mode.toLowerCase()}`;
+      label.textContent = `${mode} MODE`;
+    }
+    if (sw) {
+      sw.className = `apple-switch ${mode.toLowerCase()}`;
+    }
   });
 }
 

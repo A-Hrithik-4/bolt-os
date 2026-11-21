@@ -189,10 +189,12 @@
         </div>
 
         <div class="topbar-right">
-          <!-- Live Execution Mode Indicator Pill -->
-          <div class="mode-indicator-pill safe" title="Click to toggle execution mode">
-            <span class="mode-indicator-dot"></span>
-            <span class="mode-text">SAFE MODE</span>
+          <!-- Apple iOS Toggle Switch Button -->
+          <div class="mode-toggle-switch-wrapper" title="Click to toggle execution mode (SAFE / UNSAFE)">
+            <span class="mode-toggle-label safe">SAFE MODE</span>
+            <div class="apple-switch safe">
+              <div class="apple-switch-thumb"></div>
+            </div>
           </div>
 
           <!-- Notification Bell -->
@@ -215,42 +217,8 @@
       <!-- Main Dashboard Content Container -->
       <main class="content-container">
 
-        <!-- 1. Welcome Section & Execution Mode Control -->
-        <section class="dashboard-hero animate-fade-in-up">
-          <div class="hero-content">
-            <div class="hero-kicker">
-              <span class="kicker-dot"></span>
-              OS Academic Simulation · CSC304A
-            </div>
-            <h1 class="hero-title">Good evening, <span class="accent">BOLT Banking</span></h1>
-            <p class="hero-subtitle">
-              Monitor customer transactions, observe race conditions in unmanaged threads, and explore mutual exclusion & locking technology in real time.
-            </p>
-          </div>
-
-          <div class="hero-controls">
-            <div class="hero-mode-card">
-              <span class="mode-card-label">Concurrency Strategy</span>
-              <div class="mode-toggle-container">
-                <button class="mode-toggle-btn active safe-active" data-mode="SAFE">
-                  <span class="mode-toggle-icon">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </span>
-                  SAFE Mode
-                </button>
-                <button class="mode-toggle-btn" data-mode="UNSAFE">
-                  <span class="mode-toggle-icon">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </span>
-                  UNSAFE Mode
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 2. Four Key Statistics Glass Cards -->
-        <section class="stats-grid animate-fade-in-up delay-1">
+        <!-- 1. Four Key Statistics Glass Cards -->
+        <section class="stats-grid animate-fade-in-up">
           <!-- Card 1: Total Accounts -->
           <div class="stat-card">
             <div class="stat-header">
