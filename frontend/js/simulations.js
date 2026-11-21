@@ -198,9 +198,9 @@ async function triggerDeadlockDemo() {
 
     if (logContainer && res.events) {
       logContainer.innerHTML = res.events.map(ev => `
-        <div style="display: flex; gap: 12px; padding: 8px 12px; border-bottom: 1px solid rgba(173,187,218,0.25); font-size: 12.5px;">
-          <span style="font-family: 'JetBrains Mono', monospace; color: var(--c-heather);">${new Date(ev.timestamp).toLocaleTimeString()}</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--c-sapphire); width: 160px;">${ev.thread}</span>
+        <div style="display: flex; gap: 12px; padding: 8px 12px; border-bottom: 1px solid rgba(148,163,184,0.25); font-size: 12.5px;">
+          <span style="font-family: 'JetBrains Mono', monospace; color: var(--c-slate-cool);">${new Date(ev.timestamp).toLocaleTimeString()}</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--c-brand-dark); width: 160px;">${ev.thread}</span>
           <span style="color: var(--text-heading);">${ev.message}</span>
         </div>
       `).join('');
@@ -245,8 +245,8 @@ async function triggerDeadlockPreventionDemo() {
 
     if (logContainer && res.events) {
       logContainer.innerHTML = res.events.map(ev => `
-        <div style="display: flex; gap: 12px; padding: 8px 12px; border-bottom: 1px solid rgba(173,187,218,0.25); font-size: 12.5px;">
-          <span style="font-family: 'JetBrains Mono', monospace; color: var(--c-heather);">${new Date(ev.timestamp).toLocaleTimeString()}</span>
+        <div style="display: flex; gap: 12px; padding: 8px 12px; border-bottom: 1px solid rgba(148,163,184,0.25); font-size: 12.5px;">
+          <span style="font-family: 'JetBrains Mono', monospace; color: var(--c-slate-cool);">${new Date(ev.timestamp).toLocaleTimeString()}</span>
           <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--green); width: 160px;">${ev.thread}</span>
           <span style="color: var(--text-heading);">${ev.message}</span>
         </div>
@@ -280,7 +280,7 @@ async function triggerComparisonExperiment() {
     if (box) {
       box.style.display = 'block';
       box.innerHTML = `
-        <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(173,187,218,0.5); border-radius: var(--radius-md); padding: 14px;">
+        <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(148,163,184,0.35); border-radius: var(--radius-md); padding: 14px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <strong style="font-size: 13px; color: var(--text-heading);">Equivalent Experiment: 2 x ₹6,000 Withdrawals on ₹10,000</strong>
             <span class="badge badge-safe">SIM ID: ${data.comparisonId}</span>

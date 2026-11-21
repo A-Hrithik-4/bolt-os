@@ -615,6 +615,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (BoltState.isBackendConnected) {
     console.log('%c⚡ BOLT Live Backend Connected (http://localhost:8080/api)', 'color: #10B981; font-weight: bold;');
   } else {
-    console.log('%c⚡ BOLT Running in Standalone Glassmorphism Simulation Mode', 'color: #7091E6; font-weight: bold;');
+    console.log('%c⚡ BOLT Running in Standalone Glassmorphism Simulation Mode', 'color: #06B6D4; font-weight: bold;');
   }
 });

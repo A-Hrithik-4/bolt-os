@@ -1,40 +1,55 @@
 /* ============================================================
    BOLT — Banking Operations & Locking Technology
    BASE DESIGN SYSTEM & TOKENS
-   Visual Identity: Derived from Hrithik's Portfolio
-   (Shopify Editions Winter '24 — FOUNDATIONS + Apple Glassmorphism)
+   Visual Identity: Apple-Inspired Glassmorphism
+   Theme: Arctic Glacial Cyan & Deep Alpine Oceanic Slate
    ============================================================ */
 
 :root {
-  /* --- Portfolio Master Color Palette --- */
-  --c-sapphire: #3D52A0;       /* Royal Sapphire Tech Indigo */
-  --c-sapphire-dark: #2F4182;  /* Deep Navy Accent */
-  --c-periwinkle: #7091E6;     /* Vibrant Periwinkle Sky Blue */
-  --c-heather: #8697C4;        /* Muted Blue Slate / Heather Periwinkle */
-  --c-mist: #ADBBDA;           /* Pastel Ice Mist Blue / Lavender Tint */
-  --c-lilac-base: #EDE8F5;     /* Pale Lavender White / Lilac Frost Base */
+  /* --- Modern Fresh Master Color Palette (Arctic Glacial & Alpine Slate) --- */
+  --c-brand: #0891B2;          /* Electric Glacial Cyan / Nordic Teal */
+  --c-brand-dark: #0E7490;     /* Deep Alpine Teal */
+  --c-brand-deep: #155E75;     /* Oceanic Slate */
+  --c-brand-glow: rgba(8, 145, 178, 0.40);
+
+  --c-vibrant: #06B6D4;        /* Luminous Arctic Cyan */
+  --c-vibrant-light: #22D3EE;  /* High-energy Glacier Ice */
+  --c-tech-indigo: #6366F1;    /* Auxiliary Electric Indigo / Concurrency Accent */
+
+  --c-slate-cool: #64748B;     /* Cool Titanium Slate 500 */
+  --c-slate-light: #94A3B8;    /* Muted Glacial Slate 400 */
+  --c-mist: #CBD5E1;           /* Arctic Mist Frost 300 */
+  --c-mist-subtle: #E2E8F0;    /* Glacial Border Tint 200 */
+  --c-ice-base: #F1F5F9;       /* Crisp Glacial White / Ice Frost Base */
+
+  /* Backward compatibility aliases */
+  --c-sapphire: var(--c-brand-dark);
+  --c-sapphire-dark: var(--c-brand-deep);
+  --c-periwinkle: var(--c-vibrant);
+  --c-heather: var(--c-slate-cool);
+  --c-lilac-base: var(--c-ice-base);
 
   /* --- Semantic Backgrounds & Surfaces --- */
-  --bg-body: #EDE8F5;
-  --bg-surface: #F5F2F9;
+  --bg-body: #F1F5F9;
+  --bg-surface: #F8FAFC;
   --bg-surface-elevated: #FFFFFF;
-  --bg-sidebar: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(237, 232, 245, 0.76) 100%);
-  --bg-topbar: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(237, 232, 245, 0.72) 100%);
+  --bg-sidebar: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(240, 249, 255, 0.78) 100%);
+  --bg-topbar: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(240, 249, 255, 0.76) 100%);
 
   /* --- Typography Colors --- */
-  --text-heading: #1B2446;     /* Deep royal navy charcoal */
-  --text-body: #374263;        /* Slate indigo charcoal */
-  --text-muted: #647299;       /* Muted heather slate */
+  --text-heading: #0F172A;     /* Deep Obsidian Slate (rich, high-contrast, razor sharp) */
+  --text-body: #334155;        /* Slate Charcoal body */
+  --text-muted: #64748B;       /* Titanium Slate muted */
   --text-on-accent: #FFFFFF;
 
   /* --- Accent Colors & Glows --- */
-  --accent: #3D52A0;
-  --accent-hover: #2F4182;
-  --accent-vibrant: #7091E6;
-  --accent-soft: rgba(61, 82, 160, 0.10);
-  --accent-glow: rgba(112, 145, 230, 0.35);
-  --mist-accent: #ADBBDA;
-  --mist-soft: rgba(173, 187, 218, 0.30);
+  --accent: #0891B2;
+  --accent-hover: #0E7490;
+  --accent-vibrant: #06B6D4;
+  --accent-soft: rgba(8, 145, 178, 0.10);
+  --accent-glow: rgba(6, 182, 212, 0.35);
+  --mist-accent: #CBD5E1;
+  --mist-soft: rgba(203, 213, 225, 0.35);
 
   /* --- Status / Concurrency Mode Semantics --- */
   --green: #10B981;
@@ -60,26 +75,26 @@
   --unsafe-mode-border: rgba(239, 68, 68, 0.35);
 
   /* --- Apple Light Premium Glassmorphism Tokens --- */
-  --glass-panel: linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(237, 232, 245, 0.68) 100%);
-  --glass-panel-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(237, 232, 245, 0.45) 100%);
-  --glass-panel-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 232, 245, 0.84) 100%);
-  --glass-panel-active: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 238, 250, 0.92) 100%);
+  --glass-panel: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(240, 249, 255, 0.68) 100%);
+  --glass-panel-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(240, 249, 255, 0.48) 100%);
+  --glass-panel-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 249, 255, 0.85) 100%);
+  --glass-panel-active: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(236, 248, 255, 0.92) 100%);
 
-  --glass-border: rgba(255, 255, 255, 0.92);
-  --glass-border-subtle: rgba(173, 187, 218, 0.45);
-  --glass-border-hover: rgba(112, 145, 230, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.94);
+  --glass-border-subtle: rgba(148, 163, 184, 0.32);
+  --glass-border-hover: rgba(8, 145, 178, 0.45);
 
   --glass-blur: blur(24px) saturate(190%) contrast(102%);
   --glass-blur-heavy: blur(36px) saturate(200%) contrast(105%);
   --glass-blur-subtle: blur(14px) saturate(160%);
 
-  --glass-shadow: 0 16px 42px -10px rgba(61, 82, 160, 0.12), 0 2px 8px -2px rgba(61, 82, 160, 0.06);
-  --glass-shadow-hover: 0 26px 58px -12px rgba(112, 145, 230, 0.28), 0 6px 20px -2px rgba(61, 82, 160, 0.10);
-  --glass-shadow-sm: 0 6px 18px -4px rgba(61, 82, 160, 0.08), 0 1px 3px rgba(61, 82, 160, 0.04);
-  --glass-shadow-lg: 0 32px 72px -16px rgba(61, 82, 160, 0.22), 0 8px 28px -4px rgba(61, 82, 160, 0.08);
+  --glass-shadow: 0 16px 42px -10px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(8, 145, 178, 0.05);
+  --glass-shadow-hover: 0 26px 58px -12px rgba(8, 145, 178, 0.22), 0 6px 20px -2px rgba(15, 23, 42, 0.06);
+  --glass-shadow-sm: 0 6px 18px -4px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(8, 145, 178, 0.04);
+  --glass-shadow-lg: 0 32px 72px -16px rgba(15, 23, 42, 0.16), 0 8px 28px -4px rgba(8, 145, 178, 0.08);
 
-  --glass-highlight: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 1px 0 rgba(134, 151, 196, 0.16);
-  --glass-highlight-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(61, 82, 160, 0.20);
+  --glass-highlight: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 1px 0 rgba(148, 163, 184, 0.14);
+  --glass-highlight-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(8, 145, 178, 0.18);
 
   /* --- Geometry & Transitions --- */
   --radius-xl: 24px;
@@ -99,7 +114,9 @@
   --max-content-width: 1440px;
 }
 
-/* --- Universal Reset & Box Sizing --- */
+/* ============================================================
+   UNIVERSAL RESET & CROSS-BROWSER COMPATIBILITY
+   ============================================================ */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -110,17 +127,20 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
   background-color: var(--bg-body);
   background-image:
-    radial-gradient(circle at 14% 10%, rgba(112, 145, 230, 0.22), transparent 45%),
-    radial-gradient(circle at 86% 16%, rgba(173, 187, 218, 0.42), transparent 48%),
-    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.65), transparent 55%),
-    radial-gradient(circle at 85% 72%, rgba(61, 82, 160, 0.16), transparent 42%),
-    radial-gradient(circle at 15% 85%, rgba(173, 187, 218, 0.35), transparent 46%),
-    linear-gradient(180deg, #F6F4FA 0%, #EDE8F5 45%, #E3DDF0 100%);
+    radial-gradient(circle at 14% 10%, rgba(6, 182, 212, 0.18), transparent 45%),
+    radial-gradient(circle at 86% 16%, rgba(16, 185, 129, 0.13), transparent 48%),
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.75), transparent 55%),
+    radial-gradient(circle at 85% 72%, rgba(14, 116, 144, 0.12), transparent 42%),
+    radial-gradient(circle at 15% 85%, rgba(56, 189, 248, 0.15), transparent 46%),
+    linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 45%, #E2E8F0 100%);
   background-attachment: fixed;
   color: var(--text-body);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -131,7 +151,7 @@ body {
 }
 
 ::selection {
-  background: rgba(112, 145, 230, 0.30);
+  background: rgba(6, 182, 212, 0.28);
   color: var(--text-heading);
 }
 
@@ -158,11 +178,13 @@ button {
   font: inherit;
   cursor: pointer;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 input, select, textarea {
   font: inherit;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* --- Apple-style Custom Scrollbar --- */
@@ -174,13 +196,13 @@ input, select, textarea {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(134, 151, 196, 0.40);
+  background: rgba(148, 163, 184, 0.40);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(112, 145, 230, 0.75);
+  background: rgba(8, 145, 178, 0.65);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
@@ -199,6 +221,7 @@ input, select, textarea {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
+  -webkit-filter: blur(100px);
   opacity: 0.35;
   pointer-events: none;
   will-change: transform;
@@ -209,7 +232,7 @@ input, select, textarea {
   height: 580px;
   top: -120px;
   left: 6%;
-  background: radial-gradient(circle, rgba(112, 145, 230, 0.34) 0%, rgba(112, 145, 230, 0.10) 65%, transparent 100%);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.30) 0%, rgba(6, 182, 212, 0.08) 65%, transparent 100%);
   animation: floatOrb1 20s ease-in-out infinite alternate;
 }
 
@@ -218,7 +241,7 @@ input, select, textarea {
   height: 640px;
   top: 34%;
   right: 2%;
-  background: radial-gradient(circle, rgba(173, 187, 218, 0.50) 0%, rgba(173, 187, 218, 0.16) 65%, transparent 100%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(16, 185, 129, 0.06) 65%, transparent 100%);
   animation: floatOrb2 24s ease-in-out infinite alternate;
 }
 
@@ -227,7 +250,7 @@ input, select, textarea {
   height: 520px;
   bottom: 2%;
   left: 12%;
-  background: radial-gradient(circle, rgba(61, 82, 160, 0.22) 0%, rgba(61, 82, 160, 0.06) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(14, 116, 144, 0.22) 0%, rgba(14, 116, 144, 0.05) 60%, transparent 100%);
   animation: floatOrb3 22s ease-in-out infinite alternate;
 }
 
@@ -254,5 +277,12 @@ input, select, textarea {
   }
   .glass-orb {
     animation: none !important;
+  }
+}
+
+/* Fallback for browsers that do NOT support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .sidebar, .topbar, .glass-card, .modal-container, .toast, .btn-ghost, .hero-mode-card {
+    background-color: #FFFFFF !important;
   }
 }

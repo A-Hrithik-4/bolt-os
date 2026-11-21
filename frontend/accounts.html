@@ -355,10 +355,10 @@
             <span class="badge badge-success">${a.accountStatus}</span>
           </div>
           <h3 style="font-size: 18px; margin-bottom: 4px; color: var(--text-heading);">${a.customerName}</h3>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--c-sapphire); margin: 8px 0 16px 0;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--c-brand-dark); margin: 8px 0 16px 0;">
             ${formatCurrency(a.balance)}
           </div>
-          <div style="display: flex; gap: 8px; border-top: 1px solid rgba(173,187,218,0.25); padding-top: 14px;">
+          <div style="display: flex; gap: 8px; border-top: 1px solid rgba(148,163,184,0.25); padding-top: 14px;">
             <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="viewAccountDetails('${a.accountNumber}')">Details</button>
             <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="quickWithdraw('${a.accountNumber}')">Withdraw</button>
             <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="quickDeposit('${a.accountNumber}')">Deposit</button>

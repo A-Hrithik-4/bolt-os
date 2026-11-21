@@ -36,10 +36,10 @@ const BoltCharts = {
 
     // Subtle horizontal gridlines
     const gridLines = 4;
-    ctx.strokeStyle = 'rgba(173, 187, 218, 0.28)';
+    ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
     ctx.lineWidth = 1;
     ctx.font = '11px JetBrains Mono, monospace';
-    ctx.fillStyle = '#647299';
+    ctx.fillStyle = '#64748B';
     ctx.textAlign = 'right';
 
     for (let i = 0; i <= gridLines; i++) {
@@ -109,21 +109,21 @@ const BoltCharts = {
       });
     }
 
-    // 1. Transfers Series (Sapphire / Periwinkle)
+    // 1. Transfers Series (Electric Arctic Cyan)
     const transferGrad = ctx.createLinearGradient(0, padding.top, 0, height);
-    transferGrad.addColorStop(0, 'rgba(112, 145, 230, 0.25)');
-    transferGrad.addColorStop(1, 'rgba(112, 145, 230, 0.00)');
-    drawSeries(transfers, '#7091E6', transferGrad, 'rgba(112, 145, 230, 0.4)');
+    transferGrad.addColorStop(0, 'rgba(6, 182, 212, 0.22)');
+    transferGrad.addColorStop(1, 'rgba(6, 182, 212, 0.00)');
+    drawSeries(transfers, '#06B6D4', transferGrad, 'rgba(6, 182, 212, 0.45)');
 
     // 2. Withdrawals Series (Coral / Amber)
     const withdrawGrad = ctx.createLinearGradient(0, padding.top, 0, height);
-    withdrawGrad.addColorStop(0, 'rgba(239, 68, 68, 0.22)');
+    withdrawGrad.addColorStop(0, 'rgba(239, 68, 68, 0.20)');
     withdrawGrad.addColorStop(1, 'rgba(239, 68, 68, 0.00)');
     drawSeries(withdrawals, '#EF4444', withdrawGrad, 'rgba(239, 68, 68, 0.4)');
 
     // 3. Deposits Series (Emerald Green)
     const depositGrad = ctx.createLinearGradient(0, padding.top, 0, height);
-    depositGrad.addColorStop(0, 'rgba(16, 185, 129, 0.28)');
+    depositGrad.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
     depositGrad.addColorStop(1, 'rgba(16, 185, 129, 0.00)');
     drawSeries(deposits, '#10B981', depositGrad, 'rgba(16, 185, 129, 0.5)');
   },
@@ -151,7 +151,7 @@ const BoltCharts = {
     // Background track ring
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(173, 187, 218, 0.35)';
+    ctx.strokeStyle = 'rgba(148, 163, 184, 0.28)';
     ctx.lineWidth = 10;
     ctx.stroke();
 
@@ -161,28 +161,28 @@ const BoltCharts = {
     const endAngle = startAngle + Math.PI * 2 * pct;
 
     const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0, '#3D52A0');
-    grad.addColorStop(1, '#7091E6');
+    grad.addColorStop(0, '#0E7490');
+    grad.addColorStop(1, '#06B6D4');
 
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.strokeStyle = grad;
     ctx.lineWidth = 10;
     ctx.lineCap = 'round';
-    ctx.shadowColor = 'rgba(112, 145, 230, 0.4)';
+    ctx.shadowColor = 'rgba(6, 182, 212, 0.40)';
     ctx.shadowBlur = 8;
     ctx.stroke();
     ctx.shadowBlur = 0;
 
     // Center text
     ctx.font = '700 22px Space Grotesk, sans-serif';
-    ctx.fillStyle = '#1B2446';
+    ctx.fillStyle = '#0F172A';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(`${activeCount}/${totalCapacity}`, centerX, centerY - 4);
 
     ctx.font = '500 11px Inter, sans-serif';
-    ctx.fillStyle = '#647299';
+    ctx.fillStyle = '#64748B';
     ctx.fillText('ACTIVE', centerX, centerY + 16);
   }
 };

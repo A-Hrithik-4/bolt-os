@@ -123,7 +123,7 @@
         <section class="glass-card animate-fade-in-up delay-1" style="margin-bottom: 24px;">
           <div class="card-header">
             <div class="card-title-group">
-              <div class="card-icon" style="background: rgba(112, 145, 230, 0.16); color: var(--c-sapphire);">
+              <div class="card-icon" style="background: var(--accent-soft); color: var(--c-brand-dark);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
               </div>
               <div>
@@ -139,7 +139,7 @@
 
             <!-- Left: Incoming Thread Workers -->
             <div style="display: flex; flex-direction: column; gap: 16px;">
-              <div class="glass-card-subtle" id="visThread1" style="padding: 16px; border-left: 4px solid var(--c-sapphire); transition: all 0.4s var(--ease-apple);">
+              <div class="glass-card-subtle" id="visThread1" style="padding: 16px; border-left: 4px solid var(--c-brand-dark); transition: all 0.4s var(--ease-apple);">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                   <strong style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">THREAD-1 (ATM)</strong>
                   <span class="badge badge-pending" id="t1Status">WAITING</span>
@@ -147,7 +147,7 @@
                 <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Action: Deposit ₹500</div>
               </div>
 
-              <div class="glass-card-subtle" id="visThread2" style="padding: 16px; border-left: 4px solid var(--c-periwinkle); transition: all 0.4s var(--ease-apple);">
+              <div class="glass-card-subtle" id="visThread2" style="padding: 16px; border-left: 4px solid var(--c-vibrant); transition: all 0.4s var(--ease-apple);">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                   <strong style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">THREAD-2 (ONLINE)</strong>
                   <span class="badge badge-pending" id="t2Status">WAITING</span>
@@ -157,7 +157,7 @@
             </div>
 
             <!-- Center: Critical Section & Lock Status -->
-            <div class="glass-card" id="criticalSectionBox" style="background: rgba(255,255,255,0.7); border: 2px dashed rgba(112, 145, 230, 0.45); padding: 28px; text-align: center; border-radius: var(--radius-xl); transition: all 0.4s var(--ease-apple);">
+            <div class="glass-card" id="criticalSectionBox" style="background: rgba(255,255,255,0.7); border: 2px dashed rgba(6, 182, 212, 0.45); padding: 28px; text-align: center; border-radius: var(--radius-xl); transition: all 0.4s var(--ease-apple);">
               <div id="lockIcon" style="font-size: 32px; margin-bottom: 8px;">🔓</div>
               <div id="lockLabel" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--green); text-transform: uppercase;">
                 ReentrantLock: UNLOCKED
