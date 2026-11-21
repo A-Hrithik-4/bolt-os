@@ -15,19 +15,48 @@ document.addEventListener('DOMContentLoaded', () => {
 function initSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const collapseBtn = document.querySelector('.sidebar-collapse-btn');
-  if (!sidebar || !collapseBtn) return;
+  if (!sidebar) return;
+
+  function updateCollapseBtnTooltip(collapsed) {
+    if (collapseBtn) {
+      collapseBtn.setAttribute('title', collapsed ? 'Expand Sidebar' : 'Collapse Sidebar');
+      collapseBtn.setAttribute('aria-label', collapsed ? 'Expand Sidebar' : 'Collapse Sidebar');
+    }
+  }
 
   // Restore collapsed state from localStorage
   const isCollapsed = localStorage.getItem('bolt_sidebar_collapsed') === 'true';
   if (isCollapsed) {
     sidebar.classList.add('collapsed');
+    updateCollapseBtnTooltip(true);
   }
 
-  collapseBtn.addEventListener('click', () => {
+  const toggleSidebar = () => {
     sidebar.classList.toggle('collapsed');
     const collapsed = sidebar.classList.contains('collapsed');
     localStorage.setItem('bolt_sidebar_collapsed', collapsed);
+    updateCollapseBtnTooltip(collapsed);
+  };
+
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', toggleSidebar);
+  }
+
+  // Also bind to any topbar sidebar toggle button
+  document.querySelectorAll('.sidebar-toggle-topbar-btn').forEach(btn => {
+    btn.addEventListener('click', toggleSidebar);
   });
+
+  // Clicking brand logo in collapsed sidebar also expands it
+  const brandLink = sidebar.querySelector('.brand-link');
+  if (brandLink) {
+    brandLink.addEventListener('click', (e) => {
+      if (sidebar.classList.contains('collapsed')) {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+  }
 }
 
 // Mobile Slide-Out Drawer and Backdrop

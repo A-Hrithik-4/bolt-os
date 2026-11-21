@@ -274,12 +274,44 @@
 }
 
 .sidebar.collapsed .sidebar-header {
-  padding: 22px 14px;
+  padding: 16px 10px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 10px;
+}
+
+.sidebar.collapsed .brand-link {
+  cursor: pointer;
 }
 
 .sidebar.collapsed .sidebar-collapse-btn {
-  display: none;
+  display: flex !important;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(148, 163, 184, 0.40);
+  color: var(--c-brand-dark);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.sidebar.collapsed .sidebar-collapse-btn svg {
+  transform: rotate(180deg);
+  transition: transform var(--transition-fast);
+}
+
+.sidebar.collapsed .sidebar-collapse-btn:hover {
+  background: #FFFFFF;
+  color: var(--c-brand);
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.25);
+  border-color: var(--c-vibrant);
 }
 
 .sidebar.collapsed .nav-item a {
@@ -342,6 +374,36 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+/* Topbar macOS Sidebar Toggle Button */
+.sidebar-toggle-topbar-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-topbar-btn:hover {
+  background: #FFFFFF;
+  color: var(--c-brand);
+  border-color: var(--c-vibrant);
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.15);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 992px) {
+  .sidebar-toggle-topbar-btn {
+    display: none;
+  }
 }
 
 .breadcrumbs {
