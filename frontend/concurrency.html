@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concurrency Lab — BOLT Banking Operations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="nav-label">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="nav-label">Accounts</span><span class="badge">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><span class="nav-label">Transactions</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span class="nav-label">Simulations</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg><span class="nav-label">Concurrency Lab</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span class="nav-label">Deadlock Lab</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span class="nav-label">Settings</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator"><div class="status-dot-pulse"></div><div class="system-status-text"><strong>System Engine</strong>Java 21 · H2 JPA Active</div></div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+          <div class="breadcrumbs"><span class="crumb-root">BOLT</span><span class="crumb-separator">/</span><span class="crumb-current">Concurrency Lab</span></div>
+        </div>
+        <div class="topbar-right">
+          <div class="mode-indicator-pill safe"><span class="mode-indicator-dot"></span><span class="mode-text">SAFE MODE</span></div>
+          <div class="user-avatar-btn"><div class="avatar-img">HA</div><span class="avatar-name">Hrithik A.</span></div>
+        </div>
+      </header>
+
+      <main class="content-container">
+
+        <!-- Lab Header Banner -->
+        <section class="dashboard-hero animate-fade-in-up" style="margin-bottom: 24px;">
+          <div class="hero-content">
+            <span class="hero-kicker"><span class="kicker-dot"></span>Interactive Visualizer</span>
+            <h1 class="hero-title">Critical Section & <span class="accent">Mutual Exclusion</span></h1>
+            <p class="hero-subtitle">
+              Visualise how threads compete for shared account memory. Watch mutual exclusion in SAFE mode serialize execution, or see threads interleave destructively in UNSAFE mode.
+            </p>
+          </div>
+          <div class="hero-controls">
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-safe" onclick="runConcurrencyVisualizer('SAFE')">Simulate SAFE Lock</button>
+              <button class="btn btn-unsafe" onclick="runConcurrencyVisualizer('UNSAFE')">Simulate UNSAFE Race</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Visualizer Stage Card -->
+        <section class="glass-card animate-fade-in-up delay-1" style="margin-bottom: 24px;">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="card-icon" style="background: rgba(112, 145, 230, 0.16); color: var(--c-sapphire);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </div>
+              <div>
+                <h3 class="card-title">Shared Memory Arena: Account ACC-1001</h3>
+                <p class="card-subtitle">Real-time thread state & critical section boundary</p>
+              </div>
+            </div>
+            <div id="visualizerModeBadge"><span class="badge badge-safe">SAFE MODE ACTIVE</span></div>
+          </div>
+
+          <!-- Dynamic Visualizer Stage Canvas Area -->
+          <div style="display: grid; grid-template-columns: 1fr 1.6fr 1fr; gap: 20px; align-items: center; min-height: 280px; padding: 20px 0;">
+
+            <!-- Left: Incoming Thread Workers -->
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="glass-card-subtle" id="visThread1" style="padding: 16px; border-left: 4px solid var(--c-sapphire); transition: all 0.4s var(--ease-apple);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">THREAD-1 (ATM)</strong>
+                  <span class="badge badge-pending" id="t1Status">WAITING</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Action: Deposit ₹500</div>
+              </div>
+
+              <div class="glass-card-subtle" id="visThread2" style="padding: 16px; border-left: 4px solid var(--c-periwinkle); transition: all 0.4s var(--ease-apple);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">THREAD-2 (ONLINE)</strong>
+                  <span class="badge badge-pending" id="t2Status">WAITING</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Action: Withdraw ₹500</div>
+              </div>
+            </div>
+
+            <!-- Center: Critical Section & Lock Status -->
+            <div class="glass-card" id="criticalSectionBox" style="background: rgba(255,255,255,0.7); border: 2px dashed rgba(112, 145, 230, 0.45); padding: 28px; text-align: center; border-radius: var(--radius-xl); transition: all 0.4s var(--ease-apple);">
+              <div id="lockIcon" style="font-size: 32px; margin-bottom: 8px;">🔓</div>
+              <div id="lockLabel" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--green); text-transform: uppercase;">
+                ReentrantLock: UNLOCKED
+              </div>
+              <div style="margin: 16px 0;">
+                <div style="font-size: 11.5px; color: var(--text-muted); text-transform: uppercase;">Shared Balance</div>
+                <div id="sharedBalanceDisplay" style="font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-heading);">
+                  ₹10,000.00
+                </div>
+              </div>
+              <div id="csActionText" style="font-size: 13px; color: var(--text-muted); min-height: 20px;">
+                Critical section is idle. Click either simulation button above.
+              </div>
+            </div>
+
+            <!-- Right: Lock Wait Queue -->
+            <div class="glass-card-subtle" style="padding: 16px; min-height: 200px; display: flex; flex-direction: column;">
+              <h4 style="font-size: 13px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 12px;">Lock Wait Queue</h4>
+              <div id="waitQueueList" style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center; font-size: 12px; color: var(--text-muted); text-align: center;">
+                Queue Empty
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- OS Educational Concepts 3-Card Grid -->
+        <section class="stats-grid animate-fade-in-up delay-2">
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 8px; font-size: 16px;">1. Mutual Exclusion</h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6;">
+              If a process is executing in its critical section, no other processes can be executing in their critical sections. BOLT implements this using Java's <code>ReentrantLock</code>.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 8px; font-size: 16px;">2. Progress</h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6;">
+              If no process is executing in its critical section and some processes wish to enter, only those not in their remainder sections can participate in deciding who will enter next.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 8px; font-size: 16px;">3. Bounded Waiting</h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6;">
+              There must exist a bound on the number of times other processes are allowed to enter their critical sections after a process has made a request. Fair locking prevents starvation.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 8px; font-size: 16px;">4. Optimistic Versioning</h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6;">
+              In addition to thread mutexes, BOLT employs <code>@Version</code> optimistic locking to ensure that conflicting database transactions from other JVM nodes abort safely.
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    function runConcurrencyVisualizer(mode) {
+      const isSafe = mode === 'SAFE';
+      const badge = document.getElementById('visualizerModeBadge');
+      const csBox = document.getElementById('criticalSectionBox');
+      const lockIcon = document.getElementById('lockIcon');
+      const lockLabel = document.getElementById('lockLabel');
+      const balDisplay = document.getElementById('sharedBalanceDisplay');
+      const actionText = document.getElementById('csActionText');
+      const t1Status = document.getElementById('t1Status');
+      const t2Status = document.getElementById('t2Status');
+      const queueList = document.getElementById('waitQueueList');
+
+      badge.innerHTML = `<span class="badge ${isSafe ? 'badge-safe' : 'badge-unsafe'}">${mode} MODE SIMULATION</span>`;
+      balDisplay.textContent = '₹10,000.00';
+
+      if (isSafe) {
+        // Step 1: Thread 1 acquires lock
+        t1Status.textContent = 'ACQUIRING LOCK';
+        t1Status.className = 'badge badge-pending';
+        actionText.textContent = 'THREAD-1 calling lock.lock()...';
+
+        setTimeout(() => {
+          lockIcon.textContent = '🔒';
+          lockLabel.textContent = 'ReentrantLock: LOCKED by THREAD-1';
+          lockLabel.style.color = 'var(--coral)';
+          csBox.style.borderColor = 'var(--c-sapphire)';
+          t1Status.textContent = 'IN CRITICAL SECTION';
+          t1Status.className = 'badge badge-success';
+          actionText.textContent = 'THREAD-1 inside critical section: adding ₹500';
+
+          // Thread 2 attempts to acquire lock and blocks
+          setTimeout(() => {
+            t2Status.textContent = 'BLOCKED / WAITING';
+            t2Status.className = 'badge badge-failed';
+            queueList.innerHTML = `<div class="badge badge-type">THREAD-2 (WAITING FOR LOCK)</div>`;
+            actionText.textContent = 'THREAD-2 blocked! Waiting for ReentrantLock release...';
+
+            // Thread 1 updates balance and releases lock
+            setTimeout(() => {
+              balDisplay.textContent = '₹10,500.00';
+              lockIcon.textContent = '🔓';
+              lockLabel.textContent = 'ReentrantLock: RELEASED';
+              lockLabel.style.color = 'var(--green)';
+              t1Status.textContent = 'COMPLETED (₹10,500)';
+              t1Status.className = 'badge badge-type';
+
+              // Thread 2 now enters
+              setTimeout(() => {
+                queueList.innerHTML = `Queue Empty`;
+                lockIcon.textContent = '🔒';
+                lockLabel.textContent = 'ReentrantLock: LOCKED by THREAD-2';
+                lockLabel.style.color = 'var(--coral)';
+                t2Status.textContent = 'IN CRITICAL SECTION';
+                t2Status.className = 'badge badge-success';
+                actionText.textContent = 'THREAD-2 acquired lock: deducting ₹500';
+
+                setTimeout(() => {
+                  balDisplay.textContent = '₹10,000.00';
+                  lockIcon.textContent = '🔓';
+                  lockLabel.textContent = 'ReentrantLock: UNLOCKED';
+                  lockLabel.style.color = 'var(--green)';
+                  t2Status.textContent = 'COMPLETED (₹10,000)';
+                  t2Status.className = 'badge badge-type';
+                  actionText.textContent = '✅ Mutual Exclusion preserved! Both transactions completed in serial order without lost updates.';
+                  showToast('SAFE Mode Mutual Exclusion Verified', 'success');
+                }, 900);
+              }, 700);
+            }, 900);
+          }, 600);
+        }, 600);
+
+      } else {
+        // UNSAFE: No locks, threads interleave and race!
+        lockIcon.textContent = '⚠️';
+        lockLabel.textContent = 'LOCKS DISABLED (NO MUTEX)';
+        lockLabel.style.color = 'var(--coral)';
+        actionText.textContent = 'Both THREAD-1 and THREAD-2 reading ₹10,000 concurrently without synchronization...';
+
+        t1Status.textContent = 'READING ₹10,000';
+        t1Status.className = 'badge badge-unsafe';
+        t2Status.textContent = 'READING ₹10,000';
+        t2Status.className = 'badge badge-unsafe';
+
+        setTimeout(() => {
+          actionText.textContent = 'Thread 1 calculates ₹10,500, Thread 2 calculates ₹9,500 at the same time!';
+          setTimeout(() => {
+            balDisplay.textContent = '₹9,500.00';
+            t1Status.textContent = 'LOST UPDATE (OVERWRITTEN)';
+            t1Status.className = 'badge badge-failed';
+            t2Status.textContent = 'WROTE ₹9,500';
+            t2Status.className = 'badge badge-success';
+            actionText.textContent = '🚨 RACE CONDITION: Thread 2 overwrote Thread 1\'s deposit! ₹500 was lost!';
+            showToast('Lost Update detected in UNSAFE mode', 'error');
+          }, 800);
+        }, 700);
+      }
+    }
+  </script>
+</body>
+</html>

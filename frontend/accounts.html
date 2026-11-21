@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accounts — BOLT Banking Operations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span class="nav-label">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span class="nav-label">Accounts</span>
+                <span class="badge">4</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <span class="nav-label">Transactions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="nav-label">Simulations</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+                <span class="nav-label">Concurrency Lab</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span class="nav-label">Deadlock Lab</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span class="nav-label">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator">
+          <div class="status-dot-pulse"></div>
+          <div class="system-status-text">
+            <strong>System Engine</strong>
+            Java 21 · H2 JPA Active
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" aria-label="Open Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="breadcrumbs">
+            <span class="crumb-root">BOLT</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current">Accounts Management</span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" id="accountSearchInput" placeholder="Filter by customer name or account number...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="mode-indicator-pill safe">
+            <span class="mode-indicator-dot"></span>
+            <span class="mode-text">SAFE MODE</span>
+          </div>
+          <div class="user-avatar-btn">
+            <div class="avatar-img">HA</div>
+            <span class="avatar-name">Hrithik A.</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-container">
+
+        <!-- Page Header Banner -->
+        <section class="glass-card animate-fade-in-up" style="margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="eyebrow" style="margin-bottom: 6px;">PORTFOLIO ACCOUNTS LEDGER</span>
+            <h2 style="font-size: 26px; color: var(--text-heading);">Bank Accounts Overview</h2>
+            <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Managed bank accounts protected by ReentrantLock concurrency boundaries and JPA optimistic locking.</p>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <button class="btn btn-primary" onclick="openModal('createAccountModal')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Open New Account
+            </button>
+          </div>
+        </section>
+
+        <!-- Account Cards Grid -->
+        <section class="stats-grid animate-fade-in-up delay-1" id="accountCardsGrid">
+          <!-- Dynamically populated or rendered -->
+        </section>
+
+        <!-- Detailed Accounts Table Card -->
+        <section class="glass-card animate-fade-in-up delay-2">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div>
+                <h3 class="card-title">All Customer Accounts</h3>
+                <p class="card-subtitle">Real-time balances and lock status</p>
+              </div>
+            </div>
+            <div class="segmented-control">
+              <button class="segmented-btn active" onclick="filterAccounts('ALL')">All Accounts</button>
+              <button class="segmented-btn" onclick="filterAccounts('ACTIVE')">Active</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="glass-table">
+              <thead>
+                <tr>
+                  <th>Account Number</th>
+                  <th>Customer Name</th>
+                  <th>Current Balance</th>
+                  <th>Status</th>
+                  <th>Concurrency Lock</th>
+                  <th>Version (@Version)</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="accountsTableBody">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Create Account Modal -->
+  <div class="modal-overlay" id="createAccountModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Open New Bank Account</h3>
+        <button class="modal-close-btn">✕</button>
+      </div>
+      <form id="createAccountForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Account Number</label>
+            <input type="text" class="glass-input mono" id="newAccNumber" placeholder="e.g. 1005" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Customer Name</label>
+            <input type="text" class="glass-input" id="newCustomerName" placeholder="e.g. Elena Rostova" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Initial Deposit (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="0" class="glass-input" id="newInitialBalance" placeholder="5000.00" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('createAccountModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Account Details Modal -->
+  <div class="modal-overlay" id="accountDetailsModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="detailsModalTitle">Account Details</h3>
+        <button class="modal-close-btn">✕</button>
+      </div>
+      <div class="modal-body" id="detailsModalBody">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('accountDetailsModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    let allAccountsData = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadAccountsData();
+      initAccountSearch();
+    });
+
+    async function loadAccountsData() {
+      allAccountsData = await BoltApi.getAccounts();
+      renderAccountCards(allAccountsData);
+      renderAccountsTable(allAccountsData);
+    }
+
+    function renderAccountCards(accounts) {
+      const grid = document.getElementById('accountCardsGrid');
+      if (!grid) return;
+
+      grid.innerHTML = accounts.map(a => `
+        <div class="glass-card glass-card-interactive">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <span class="badge badge-type" style="font-family: 'JetBrains Mono', monospace;">${a.accountNumber}</span>
+            <span class="badge badge-success">${a.accountStatus}</span>
+          </div>
+          <h3 style="font-size: 18px; margin-bottom: 4px; color: var(--text-heading);">${a.customerName}</h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--c-sapphire); margin: 8px 0 16px 0;">
+            ${formatCurrency(a.balance)}
+          </div>
+          <div style="display: flex; gap: 8px; border-top: 1px solid rgba(173,187,218,0.25); padding-top: 14px;">
+            <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="viewAccountDetails('${a.accountNumber}')">Details</button>
+            <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="quickDeposit('${a.accountNumber}')">Deposit</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderAccountsTable(accounts) {
+      const tbody = document.getElementById('accountsTableBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = accounts.map(a => `
+        <tr>
+          <td class="mono" style="font-weight: 600; color: var(--c-sapphire);">${a.accountNumber}</td>
+          <td style="font-weight: 600; color: var(--text-heading);">${a.customerName}</td>
+          <td class="mono" style="font-weight: 700; font-size: 14px; color: var(--text-heading);">${formatCurrency(a.balance)}</td>
+          <td><span class="badge badge-success">${a.accountStatus}</span></td>
+          <td>
+            <span class="badge badge-safe">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              ReentrantLock
+            </span>
+          </td>
+          <td class="mono" style="color: var(--text-muted);">v${a.version !== undefined ? a.version : 0}</td>
+          <td style="text-align: right;">
+            <button class="btn btn-ghost btn-sm" onclick="viewAccountDetails('${a.accountNumber}')">Inspect</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function initAccountSearch() {
+      const input = document.getElementById('accountSearchInput');
+      if (!input) return;
+      input.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const filtered = allAccountsData.filter(a =>
+          a.accountNumber.toLowerCase().includes(query) ||
+          a.customerName.toLowerCase().includes(query)
+        );
+        renderAccountCards(filtered);
+        renderAccountsTable(filtered);
+      });
+    }
+
+    function filterAccounts(status) {
+      const filtered = status === 'ALL' ? allAccountsData : allAccountsData.filter(a => a.accountStatus === status);
+      renderAccountsTable(filtered);
+    }
+
+    function viewAccountDetails(accountNumber) {
+      const acc = allAccountsData.find(a => a.accountNumber === accountNumber);
+      if (!acc) return;
+
+      document.getElementById('detailsModalTitle').textContent = `Account #${acc.accountNumber} — ${acc.customerName}`;
+      document.getElementById('detailsModalBody').innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <div class="glass-card-subtle" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Current Balance</div>
+            <div style="font-size: 22px; font-weight: 700; color: var(--c-sapphire); font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+              ${formatCurrency(acc.balance)}
+            </div>
+          </div>
+          <div class="glass-card-subtle" style="padding: 14px;">
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Status</div>
+            <div style="margin-top: 6px;"><span class="badge badge-success">${acc.accountStatus}</span></div>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.7); border-radius: 12px; padding: 16px; border: 1px solid var(--glass-border);">
+          <h4 style="font-size: 14px; margin-bottom: 8px; color: var(--text-heading);">Concurrency Lock Metadata</h4>
+          <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.6;">
+            • Mutex: <code>java.util.concurrent.locks.ReentrantLock(fair=true)</code><br>
+            • Optimistic Locking: <code>@Version Long version = ${acc.version || 0}</code><br>
+            • Isolation Level: Database Transaction READ_COMMITTED
+          </p>
+        </div>
+      `;
+      openModal('accountDetailsModal');
+    }
+
+    function quickDeposit(accountNumber) {
+      document.getElementById('depositAccount').value = accountNumber;
+      openModal('depositModal');
+    }
+  </script>
+</body>
+</html>

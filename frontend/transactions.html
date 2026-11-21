@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions — BOLT Banking Operations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span class="nav-label">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span class="nav-label">Accounts</span>
+                <span class="badge">4</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <span class="nav-label">Transactions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="nav-label">Simulations</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+                <span class="nav-label">Concurrency Lab</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span class="nav-label">Deadlock Lab</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span class="nav-label">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator">
+          <div class="status-dot-pulse"></div>
+          <div class="system-status-text">
+            <strong>System Engine</strong>
+            Java 21 · H2 JPA Active
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" aria-label="Open Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="breadcrumbs">
+            <span class="crumb-root">BOLT</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current">Transaction History</span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" id="txnSearchInput" placeholder="Filter by transaction ID, account or thread...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="mode-indicator-pill safe">
+            <span class="mode-indicator-dot"></span>
+            <span class="mode-text">SAFE MODE</span>
+          </div>
+          <div class="user-avatar-btn">
+            <div class="avatar-img">HA</div>
+            <span class="avatar-name">Hrithik A.</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-container">
+
+        <!-- Top Overview Stats Banner -->
+        <section class="dashboard-hero animate-fade-in-up" style="margin-bottom: 24px; padding: 24px 32px;">
+          <div>
+            <span class="eyebrow" style="margin-bottom: 6px;">COMPREHENSIVE AUDIT TRAIL</span>
+            <h2 style="font-size: 26px; color: var(--text-heading);">Banking Transactions Ledger</h2>
+            <p style="font-size: 13.5px; color: var(--text-body); margin-top: 4px;">
+              Every operation records thread origin, channel, execution strategy, timing duration, and database status.
+            </p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button class="btn btn-primary" onclick="openModal('depositModal')">+ Deposit</button>
+            <button class="btn btn-ghost" onclick="openModal('withdrawModal')">- Withdraw</button>
+            <button class="btn btn-ghost" onclick="openModal('transferModal')">⇄ Transfer</button>
+          </div>
+        </section>
+
+        <!-- Filters Bar Card -->
+        <section class="glass-card animate-fade-in-up delay-1" style="margin-bottom: 24px; padding: 18px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Type:</span>
+              <div class="segmented-control" id="typeFilter">
+                <button class="segmented-btn active" data-type="ALL">All</button>
+                <button class="segmented-btn" data-type="DEPOSIT">Deposits</button>
+                <button class="segmented-btn" data-type="WITHDRAWAL">Withdrawals</button>
+                <button class="segmented-btn" data-type="TRANSFER">Transfers</button>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Mode:</span>
+              <div class="segmented-control" id="modeFilter">
+                <button class="segmented-btn active" data-mode="ALL">All</button>
+                <button class="segmented-btn" data-mode="SAFE">SAFE</button>
+                <button class="segmented-btn" data-mode="UNSAFE">UNSAFE</button>
+              </div>
+
+              <span style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-left: 8px;">Status:</span>
+              <div class="segmented-control" id="statusFilter">
+                <button class="segmented-btn active" data-status="ALL">All</button>
+                <button class="segmented-btn" data-status="SUCCESS">Success</button>
+                <button class="segmented-btn" data-status="FAILED">Failed</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Transactions Table Card -->
+        <section class="glass-card animate-fade-in-up delay-2">
+          <div class="table-responsive">
+            <table class="glass-table">
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Type</th>
+                  <th>Accounts</th>
+                  <th>Amount</th>
+                  <th>Channel</th>
+                  <th>Thread Name</th>
+                  <th>Mode</th>
+                  <th>Duration</th>
+                  <th>Status</th>
+                  <th>Timestamp</th>
+                  <th style="text-align: right;">Inspect</th>
+                </tr>
+              </thead>
+              <tbody id="allTransactionsTableBody">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Deposit, Withdraw, Transfer Modals -->
+  <div class="modal-overlay" id="depositModal">
+    <div class="modal-container">
+      <div class="modal-header"><h3 class="modal-title">New Deposit</h3><button class="modal-close-btn">✕</button></div>
+      <form id="depositForm">
+        <div class="modal-body">
+          <div class="form-group"><label class="form-label">Account</label><select class="glass-select" id="depositAccount"><option value="1001">1001 — Alice</option><option value="1002">1002 — Bob</option><option value="1003">1003 — Charlie</option><option value="1004">1004 — David</option></select></div>
+          <div class="form-group"><label class="form-label">Amount (₹)</label><input type="number" step="0.01" min="1" class="glass-input mono" id="depositAmount" placeholder="2000.00" required></div>
+          <div class="form-group"><label class="form-label">Channel</label><select class="glass-select" id="depositChannel"><option value="ONLINE">ONLINE</option><option value="ATM">ATM</option></select></div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-ghost" onclick="closeModal('depositModal')">Cancel</button><button type="submit" class="btn btn-primary">Process</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="withdrawModal">
+    <div class="modal-container">
+      <div class="modal-header"><h3 class="modal-title">New Withdrawal</h3><button class="modal-close-btn">✕</button></div>
+      <form id="withdrawForm">
+        <div class="modal-body">
+          <div class="form-group"><label class="form-label">Account</label><select class="glass-select" id="withdrawAccount"><option value="1001">1001 — Alice</option><option value="1002">1002 — Bob</option><option value="1003">1003 — Charlie</option><option value="1004">1004 — David</option></select></div>
+          <div class="form-group"><label class="form-label">Amount (₹)</label><input type="number" step="0.01" min="1" class="glass-input mono" id="withdrawAmount" placeholder="1000.00" required></div>
+          <div class="form-group"><label class="form-label">Channel</label><select class="glass-select" id="withdrawChannel"><option value="ATM">ATM</option><option value="ONLINE">ONLINE</option></select></div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-ghost" onclick="closeModal('withdrawModal')">Cancel</button><button type="submit" class="btn btn-primary">Process</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="transferModal">
+    <div class="modal-container">
+      <div class="modal-header"><h3 class="modal-title">Fund Transfer</h3><button class="modal-close-btn">✕</button></div>
+      <form id="transferForm">
+        <div class="modal-body">
+          <div class="form-group"><label class="form-label">From Account</label><select class="glass-select" id="transferSource"><option value="1001">1001 — Alice</option><option value="1002" selected>1002 — Bob</option></select></div>
+          <div class="form-group"><label class="form-label">To Account</label><select class="glass-select" id="transferDest"><option value="1001" selected>1001 — Alice</option><option value="1002">1002 — Bob</option></select></div>
+          <div class="form-group"><label class="form-label">Amount (₹)</label><input type="number" step="0.01" min="1" class="glass-input mono" id="transferAmount" placeholder="1500.00" required></div>
+          <div class="form-group"><label class="form-label">Channel</label><select class="glass-select" id="transferChannel"><option value="ONLINE">ONLINE</option><option value="ATM">ATM</option></select></div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-ghost" onclick="closeModal('transferModal')">Cancel</button><button type="submit" class="btn btn-primary">Execute</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Transaction Details Modal -->
+  <div class="modal-overlay" id="txnDetailsModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="txnModalTitle">Transaction Details</h3>
+        <button class="modal-close-btn">✕</button>
+      </div>
+      <div class="modal-body" id="txnModalBody">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('txnDetailsModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    let allTransactions = [];
+    let filterType = 'ALL';
+    let filterMode = 'ALL';
+    let filterStatus = 'ALL';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadTransactionsData();
+      initFilters();
+    });
+
+    async function loadTransactionsData() {
+      allTransactions = await BoltApi.getTransactions();
+      applyFilters();
+    }
+
+    function initFilters() {
+      // Type filters
+      document.querySelectorAll('#typeFilter .segmented-btn').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#typeFilter .segmented-btn').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          filterType = b.dataset.type;
+          applyFilters();
+        });
+      });
+
+      // Mode filters
+      document.querySelectorAll('#modeFilter .segmented-btn').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#modeFilter .segmented-btn').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          filterMode = b.dataset.mode;
+          applyFilters();
+        });
+      });
+
+      // Status filters
+      document.querySelectorAll('#statusFilter .segmented-btn').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#statusFilter .segmented-btn').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+          filterStatus = b.dataset.status;
+          applyFilters();
+        });
+      });
+
+      // Search input
+      const search = document.getElementById('txnSearchInput');
+      if (search) {
+        search.addEventListener('input', applyFilters);
+      }
+    }
+
+    function applyFilters() {
+      const query = (document.getElementById('txnSearchInput')?.value || '').toLowerCase().trim();
+
+      const filtered = allTransactions.filter(t => {
+        const matchesType = filterType === 'ALL' || t.transactionType === filterType;
+        const matchesMode = filterMode === 'ALL' || t.executionMode === filterMode;
+        const matchesStatus = filterStatus === 'ALL' || t.status === filterStatus;
+        const matchesQuery = !query ||
+          t.transactionId.toLowerCase().includes(query) ||
+          (t.sourceAccountNumber && t.sourceAccountNumber.toLowerCase().includes(query)) ||
+          (t.destinationAccountNumber && t.destinationAccountNumber.toLowerCase().includes(query)) ||
+          (t.threadName && t.threadName.toLowerCase().includes(query));
+
+        return matchesType && matchesMode && matchesStatus && matchesQuery;
+      });
+
+      renderTransactionsTable(filtered);
+    }
+
+    function renderTransactionsTable(transactions) {
+      const tbody = document.getElementById('allTransactionsTableBody');
+      if (!tbody) return;
+
+      if (!transactions || transactions.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="11" style="text-align: center; color: var(--text-muted); padding: 36px;">No transactions match the selected filters</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = transactions.map(t => {
+        const isSafe = t.executionMode === 'SAFE';
+        const isSuccess = t.status === 'SUCCESS';
+
+        return `
+          <tr>
+            <td class="mono" style="font-weight: 600; color: var(--c-sapphire);">${t.transactionId}</td>
+            <td><span class="badge badge-type">${t.transactionType}</span></td>
+            <td class="mono">${t.sourceAccountNumber || '--'} ${t.destinationAccountNumber ? '→ ' + t.destinationAccountNumber : ''}</td>
+            <td class="mono" style="font-weight: 700; color: var(--text-heading);">${formatCurrency(t.amount)}</td>
+            <td><span class="badge badge-channel">${t.channel}</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--text-muted);">${t.threadName}</td>
+            <td><span class="badge ${isSafe ? 'badge-safe' : 'badge-unsafe'}">${t.executionMode}</span></td>
+            <td class="mono" style="color: var(--text-muted);">${t.durationMs !== undefined ? t.durationMs + 'ms' : '--'}</td>
+            <td><span class="badge ${isSuccess ? 'badge-success' : 'badge-failed'}">${t.status}</span></td>
+            <td style="font-size: 12px; color: var(--text-muted);">${formatDate(t.timestamp)}</td>
+            <td style="text-align: right;">
+              <button class="table-action-btn" title="Inspect" onclick="inspectTxn('${t.transactionId}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function inspectTxn(txnId) {
+      const t = allTransactions.find(x => x.transactionId === txnId);
+      if (!t) return;
+
+      document.getElementById('txnModalTitle').textContent = `Transaction ${t.transactionId}`;
+      document.getElementById('txnModalBody').innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+          <div class="glass-card-subtle" style="padding: 12px;">
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Amount</div>
+            <div style="font-size: 20px; font-weight: 700; color: var(--c-sapphire); font-family: 'JetBrains Mono'; margin-top: 2px;">${formatCurrency(t.amount)}</div>
+          </div>
+          <div class="glass-card-subtle" style="padding: 12px;">
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Execution Duration</div>
+            <div style="font-size: 20px; font-weight: 700; color: var(--text-heading); font-family: 'JetBrains Mono'; margin-top: 2px;">${t.durationMs || 0} ms</div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.7); border-radius: 12px; padding: 16px; border: 1px solid var(--glass-border); font-size: 13px; line-height: 1.8;">
+          <div><strong>Type:</strong> ${t.transactionType}</div>
+          <div><strong>Source Account:</strong> <code>${t.sourceAccountNumber || 'N/A'}</code></div>
+          <div><strong>Destination:</strong> <code>${t.destinationAccountNumber || 'N/A'}</code></div>
+          <div><strong>Channel:</strong> ${t.channel}</div>
+          <div><strong>Thread Worker:</strong> <code>${t.threadName}</code></div>
+          <div><strong>Execution Mode:</strong> <span class="badge ${t.executionMode === 'SAFE' ? 'badge-safe' : 'badge-unsafe'}">${t.executionMode}</span></div>
+          <div><strong>Status:</strong> <span class="badge ${t.status === 'SUCCESS' ? 'badge-success' : 'badge-failed'}">${t.status}</span></div>
+          ${t.errorMessage ? `<div style="color: var(--coral); margin-top: 6px;"><strong>Error:</strong> ${t.errorMessage}</div>` : ''}
+          <div style="margin-top: 6px;"><strong>Description:</strong> ${t.description || 'N/A'}</div>
+        </div>
+      `;
+      openModal('txnDetailsModal');
+    }
+  </script>
+</body>
+</html>

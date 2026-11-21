@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — BOLT Banking Operations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="nav-label">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="nav-label">Accounts</span><span class="badge">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><span class="nav-label">Transactions</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span class="nav-label">Simulations</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg><span class="nav-label">Concurrency Lab</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span class="nav-label">Deadlock Lab</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span class="nav-label">Settings</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator"><div class="status-dot-pulse"></div><div class="system-status-text"><strong>System Engine</strong>Java 21 · H2 JPA Active</div></div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+          <div class="breadcrumbs"><span class="crumb-root">BOLT</span><span class="crumb-separator">/</span><span class="crumb-current">Settings & System Profile</span></div>
+        </div>
+        <div class="topbar-right">
+          <div class="mode-indicator-pill safe"><span class="mode-indicator-dot"></span><span class="mode-text">SAFE MODE</span></div>
+          <div class="user-avatar-btn"><div class="avatar-img">HA</div><span class="avatar-name">Hrithik A.</span></div>
+        </div>
+      </header>
+
+      <main class="content-container">
+
+        <!-- Top Banner -->
+        <section class="dashboard-hero animate-fade-in-up" style="margin-bottom: 24px; padding: 24px 32px;">
+          <div>
+            <span class="eyebrow" style="margin-bottom: 6px;">DESIGN IDENTITY & SYSTEM SPECS</span>
+            <h2 style="font-size: 26px; color: var(--text-heading);">Settings & Project Identity</h2>
+            <p style="font-size: 13.5px; color: var(--text-body); margin-top: 4px;">
+              Configured with the exact palette derived from Hrithik's portfolio: Royal Sapphire, Periwinkle Sky, Heather Slate, and Lilac Frost.
+            </p>
+          </div>
+        </section>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;" class="animate-fade-in-up delay-1">
+
+          <!-- Card 1: Color Palette & Visual Identity Reference -->
+          <div class="glass-card">
+            <h3 class="card-title" style="margin-bottom: 6px;">Visual Palette & Design Tokens</h3>
+            <p class="card-subtitle" style="margin-bottom: 18px;">Derived directly from <a href="https://a-hrithik-4.github.io/Portfolio/" target="_blank" style="color: var(--c-sapphire); text-decoration: underline;">a-hrithik-4.github.io/Portfolio</a></p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.7); border-radius: 10px; border: 1px solid var(--glass-border);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 22px; height: 22px; border-radius: 6px; background: #3D52A0; display: inline-block;"></span>
+                  <div>
+                    <strong style="font-size: 13px; color: var(--text-heading);">Royal Sapphire Tech Indigo</strong>
+                    <div class="mono" style="font-size: 11px; color: var(--text-muted);">#3D52A0 · --c-sapphire</div>
+                  </div>
+                </div>
+                <span class="badge badge-type">PRIMARY</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.7); border-radius: 10px; border: 1px solid var(--glass-border);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 22px; height: 22px; border-radius: 6px; background: #7091E6; display: inline-block;"></span>
+                  <div>
+                    <strong style="font-size: 13px; color: var(--text-heading);">Vibrant Periwinkle Sky</strong>
+                    <div class="mono" style="font-size: 11px; color: var(--text-muted);">#7091E6 · --c-periwinkle</div>
+                  </div>
+                </div>
+                <span class="badge badge-type">ACCENT</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.7); border-radius: 10px; border: 1px solid var(--glass-border);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 22px; height: 22px; border-radius: 6px; background: #8697C4; display: inline-block;"></span>
+                  <div>
+                    <strong style="font-size: 13px; color: var(--text-heading);">Muted Blue Slate</strong>
+                    <div class="mono" style="font-size: 11px; color: var(--text-muted);">#8697C4 · --c-heather</div>
+                  </div>
+                </div>
+                <span class="badge badge-channel">SLATE</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.7); border-radius: 10px; border: 1px solid var(--glass-border);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 22px; height: 22px; border-radius: 6px; background: #ADBBDA; display: inline-block;"></span>
+                  <div>
+                    <strong style="font-size: 13px; color: var(--text-heading);">Pastel Ice Mist Blue</strong>
+                    <div class="mono" style="font-size: 11px; color: var(--text-muted);">#ADBBDA · --c-mist</div>
+                  </div>
+                </div>
+                <span class="badge badge-channel">MIST</span>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: rgba(255,255,255,0.7); border-radius: 10px; border: 1px solid var(--glass-border);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 22px; height: 22px; border-radius: 6px; background: #EDE8F5; border: 1px solid #ccc; display: inline-block;"></span>
+                  <div>
+                    <strong style="font-size: 13px; color: var(--text-heading);">Pale Lavender White Frost Base</strong>
+                    <div class="mono" style="font-size: 11px; color: var(--text-muted);">#EDE8F5 · --c-lilac-base</div>
+                  </div>
+                </div>
+                <span class="badge badge-channel">CANVAS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Academic Project Identity & Backend Connectivity -->
+          <div class="glass-card">
+            <h3 class="card-title" style="margin-bottom: 6px;">Project Architecture & Specifications</h3>
+            <p class="card-subtitle" style="margin-bottom: 18px;">Academic Operating Systems Coursework</p>
+
+            <div style="background: rgba(255,255,255,0.7); border-radius: 12px; padding: 18px; border: 1px solid var(--glass-border); line-height: 1.8; font-size: 13px;">
+              <div><strong>Project Name:</strong> BOLT</div>
+              <div><strong>Full Form:</strong> Banking Operations & Locking Technology</div>
+              <div><strong>Course Code:</strong> CSC304A (Operating Systems)</div>
+              <div><strong>Backend Stack:</strong> Spring Boot 3.2.5 · Java 21 · H2 Database</div>
+              <div><strong>Concurrency Primitives:</strong> <code>ReentrantLock</code>, <code>CyclicBarrier</code>, <code>CountDownLatch</code>, <code>ExecutorService</code></div>
+              <div><strong>Locking Strategy:</strong> Lexicographical Lock Ordering (Prevents Deadlocks)</div>
+              <div><strong>Database Locking:</strong> <code>@Version</code> Optimistic Locking</div>
+            </div>
+
+            <div style="margin-top: 18px; padding: 14px; border-radius: 12px; background: rgba(255,255,255,0.6); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <strong style="font-size: 13px; color: var(--text-heading);">Backend API Service</strong>
+                <div class="mono" style="font-size: 11px; color: var(--text-muted);">http://localhost:8080/api</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="checkBackendHealth()">Test API Connection</button>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    async function checkBackendHealth() {
+      const isConnected = await BoltApi.checkConnection();
+      if (isConnected) {
+        showToast('✅ Backend API Connected (http://localhost:8080)', 'success');
+      } else {
+        showToast('ℹ️ Standalone Mode Active (Backend offline, realistic simulation operational)', 'info');
+      }
+    }
+  </script>
+</body>
+</html>

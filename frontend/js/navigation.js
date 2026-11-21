@@ -1,0 +1,99 @@
+/**
+ * BOLT — Navigation Controller
+ * Handles glass sidebar collapsing, active menu states, mobile slideout,
+ * breadcrumbs, and search shortcut listeners.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSidebar();
+  initMobileDrawer();
+  initSearchShortcut();
+  highlightActiveNav();
+});
+
+// Sidebar Collapse / Expand Toggle
+function initSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const collapseBtn = document.querySelector('.sidebar-collapse-btn');
+  if (!sidebar || !collapseBtn) return;
+
+  // Restore collapsed state from localStorage
+  const isCollapsed = localStorage.getItem('bolt_sidebar_collapsed') === 'true';
+  if (isCollapsed) {
+    sidebar.classList.add('collapsed');
+  }
+
+  collapseBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    const collapsed = sidebar.classList.contains('collapsed');
+    localStorage.setItem('bolt_sidebar_collapsed', collapsed);
+  });
+}
+
+// Mobile Slide-Out Drawer and Backdrop
+function initMobileDrawer() {
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.querySelector('.sidebar-backdrop');
+  if (!mobileBtn || !sidebar || !backdrop) return;
+
+  mobileBtn.addEventListener('click', () => {
+    sidebar.classList.add('mobile-open');
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  const closeDrawer = () => {
+    sidebar.classList.remove('mobile-open');
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  backdrop.addEventListener('click', closeDrawer);
+
+  // Close drawer when clicking any nav item on mobile
+  sidebar.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 992) closeDrawer();
+    });
+  });
+}
+
+// Highlight Current Page in Sidebar
+function highlightActiveNav() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-item a');
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+// Global Search Shortcut (Cmd+K / Ctrl+K)
+function initSearchShortcut() {
+  const searchInput = document.querySelector('.search-input');
+  if (!searchInput) return;
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.blur();
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    if (typeof handleGlobalSearch === 'function') {
+      handleGlobalSearch(query);
+    }
+  });
+}

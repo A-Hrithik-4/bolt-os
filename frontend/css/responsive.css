@@ -1,0 +1,158 @@
+/* ============================================================
+   BOLT — Banking Operations & Locking Technology
+   RESPONSIVE LAYOUT SYSTEM
+   Desktop, Laptop, Tablet, Mobile Breakpoints
+   ============================================================ */
+
+/* Large Tablets & Laptops (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dashboard-grid-2col {
+    grid-template-columns: 1fr;
+  }
+  
+  .quick-actions-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablets & Mobile Navigation (max-width: 992px) */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(calc(-100% - 30px));
+    width: 280px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    border-radius: 0 24px 24px 0;
+    z-index: 200;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 0 0 60px rgba(27, 36, 70, 0.4);
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .main-wrapper {
+    margin-left: 0 !important;
+    padding: 14px 16px 48px 16px;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .sidebar-collapse-btn {
+    display: none;
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .topbar-center {
+    display: none; /* Accessible via modal/expand on mobile */
+  }
+}
+
+/* Small Tablets & Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .dashboard-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+
+  .hero-controls {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .hero-mode-card {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .mode-toggle-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mode-toggle-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .quick-actions-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .modal-container {
+    padding: 0;
+    max-height: 90vh;
+  }
+
+  .modal-header {
+    padding: 18px 20px;
+  }
+
+  .modal-body {
+    padding: 18px 20px;
+  }
+
+  .modal-footer {
+    padding: 14px 20px;
+  }
+
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+/* Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .topbar-right .avatar-name {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: 26px;
+  }
+
+  .stat-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .glass-card {
+    padding: 18px 16px;
+  }
+}

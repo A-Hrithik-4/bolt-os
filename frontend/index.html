@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOLT — Banking Operations & Locking Technology</title>
+
+  <!-- Typography: Space Grotesk (Headings), Inter (Body), JetBrains Mono (Codes & Metrics) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core CSS Design System -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Apple Ambient Vibrancy Fluid Blobs -->
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+
+    <!-- ============================================================
+         A. REFINED VERTICAL GLASS SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar">
+      <!-- Sidebar Header & Logo -->
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span class="nav-label">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-label">Accounts</span>
+                <span class="badge">4</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span class="nav-label">Transactions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span class="nav-label">Simulations</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 20V10"></path>
+                  <path d="M12 20V4"></path>
+                  <path d="M6 20v-6"></path>
+                </svg>
+                <span class="nav-label">Concurrency Lab</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span class="nav-label">Deadlock Lab</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span class="nav-label">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer System Live Status -->
+      <div class="sidebar-footer">
+        <div class="system-status-indicator">
+          <div class="status-dot-pulse"></div>
+          <div class="system-status-text">
+            <strong>System Engine</strong>
+            Java 21 · H2 JPA Active
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         B. MAIN APPLICATION WRAPPER & TOP NAVIGATION
+         ============================================================ -->
+    <div class="main-wrapper">
+      
+      <!-- Top Floating Navigation Dock -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" aria-label="Open Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumbs">
+            <span class="crumb-root">BOLT</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current">Dashboard Overview</span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" placeholder="Search accounts, transaction IDs (TXN-001)...">
+            <span class="search-shortcut">⌘K</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Live Execution Mode Indicator Pill -->
+          <div class="mode-indicator-pill safe" title="Click to toggle execution mode">
+            <span class="mode-indicator-dot"></span>
+            <span class="mode-text">SAFE MODE</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="topbar-icon-btn" title="System Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="notification-badge"></span>
+          </button>
+
+          <!-- User Profile Avatar Pill -->
+          <div class="user-avatar-btn">
+            <div class="avatar-img">HA</div>
+            <span class="avatar-name">Hrithik A.</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Content Container -->
+      <main class="content-container">
+
+        <!-- 1. Welcome Section & Execution Mode Control -->
+        <section class="dashboard-hero animate-fade-in-up">
+          <div class="hero-content">
+            <div class="hero-kicker">
+              <span class="kicker-dot"></span>
+              OS Academic Simulation · CSC304A
+            </div>
+            <h1 class="hero-title">Good evening, <span class="accent">BOLT Banking</span></h1>
+            <p class="hero-subtitle">
+              Monitor customer transactions, observe race conditions in unmanaged threads, and explore mutual exclusion & locking technology in real time.
+            </p>
+          </div>
+
+          <div class="hero-controls">
+            <div class="hero-mode-card">
+              <span class="mode-card-label">Concurrency Strategy</span>
+              <div class="mode-toggle-container">
+                <button class="mode-toggle-btn active safe-active" data-mode="SAFE">
+                  <span class="mode-toggle-icon">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  SAFE Mode
+                </button>
+                <button class="mode-toggle-btn" data-mode="UNSAFE">
+                  <span class="mode-toggle-icon">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </span>
+                  UNSAFE Mode
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Four Key Statistics Glass Cards -->
+        <section class="stats-grid animate-fade-in-up delay-1">
+          <!-- Card 1: Total Accounts -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-accounts">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <span class="stat-trend positive">Active 100%</span>
+            </div>
+            <div class="stat-value" id="totalAccountsVal">4</div>
+            <div class="stat-label">Total Customer Accounts</div>
+          </div>
+
+          <!-- Card 2: Total Transactions -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-txns">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <span class="stat-trend neutral">Live Ledger</span>
+            </div>
+            <div class="stat-value" id="totalTxnsVal">--</div>
+            <div class="stat-label">Total Ledger Transactions</div>
+          </div>
+
+          <!-- Card 3: Successful Transactions -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-success">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <span class="stat-trend positive">Normal Flow</span>
+            </div>
+            <div class="stat-value" id="successTxnsVal" style="color: var(--green);">--</div>
+            <div class="stat-label">Successful Transactions</div>
+          </div>
+
+          <!-- Card 4: Failed Transactions -->
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon icon-failed">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+              </div>
+              <span class="stat-trend negative">Rejected / Errors</span>
+            </div>
+            <div class="stat-value" id="failedTxnsVal" style="color: var(--coral);">--</div>
+            <div class="stat-label">Rejected / Race Violations</div>
+          </div>
+        </section>
+
+        <!-- 3. Quick Actions Dock -->
+        <section class="quick-actions-bar animate-fade-in-up delay-2">
+          <button class="action-card-btn" onclick="openModal('depositModal')">
+            <div class="action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+            <div class="action-text">
+              <strong>New Deposit</strong>
+              <span>Credit account funds</span>
+            </div>
+          </button>
+
+          <button class="action-card-btn" onclick="openModal('withdrawModal')">
+            <div class="action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+            <div class="action-text">
+              <strong>New Withdrawal</strong>
+              <span>Debit balance securely</span>
+            </div>
+          </button>
+
+          <button class="action-card-btn" onclick="openModal('transferModal')">
+            <div class="action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="17 1 21 5 17 9"></polyline>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                <polyline points="7 23 3 19 7 15"></polyline>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+              </svg>
+            </div>
+            <div class="action-text">
+              <strong>Fund Transfer</strong>
+              <span>Atomic multi-account shift</span>
+            </div>
+          </button>
+
+          <a href="simulations.html" class="action-card-btn">
+            <div class="action-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            <div class="action-text">
+              <strong>Run Simulation</strong>
+              <span>Trigger concurrent load</span>
+            </div>
+          </a>
+        </section>
+
+        <!-- 4. Financial Overview & Thread Activity Grid -->
+        <section class="dashboard-grid-2col animate-fade-in-up delay-3">
+          <!-- Large Financial Chart Card -->
+          <div class="glass-card chart-card">
+            <div class="chart-header">
+              <div class="card-title-group">
+                <div class="card-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Financial Flow Analytics</h3>
+                  <p class="card-subtitle">Real-time volume across deposits, withdrawals & transfers</p>
+                </div>
+              </div>
+
+              <div class="chart-legend">
+                <div class="legend-item"><span class="legend-dot deposit"></span> Deposits</div>
+                <div class="legend-item"><span class="legend-dot withdrawal"></span> Withdrawals</div>
+                <div class="legend-item"><span class="legend-dot transfer"></span> Transfers</div>
+              </div>
+            </div>
+
+            <div class="chart-canvas-container">
+              <canvas id="financialChart" style="width: 100%; height: 280px;"></canvas>
+            </div>
+          </div>
+
+          <!-- Thread Activity & Pool Status Card -->
+          <div class="glass-card thread-monitor-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-icon" style="background: rgba(112, 145, 230, 0.16); color: var(--c-sapphire);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Thread Pool Engine</h3>
+                  <p class="card-subtitle">ATM & ONLINE workers status</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="thread-stats-row">
+              <div class="thread-stat-box">
+                <div class="thread-stat-num" id="activeThreadCount" style="color: var(--green);">0</div>
+                <div class="thread-stat-label">Active</div>
+              </div>
+              <div class="thread-stat-box">
+                <div class="thread-stat-num" id="completedThreadCount">0</div>
+                <div class="thread-stat-label">Completed</div>
+              </div>
+              <div class="thread-stat-box">
+                <div class="thread-stat-num" style="color: var(--c-sapphire);">8</div>
+                <div class="thread-stat-label">Pool Size</div>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 16px;">
+              <canvas id="threadGauge" style="width: 100px; height: 100px; margin: 0 auto; display: block;"></canvas>
+            </div>
+
+            <div class="thread-list">
+              <div class="thread-item">
+                <div class="thread-info">
+                  <span class="thread-indicator idle"></span>
+                  <span class="thread-name">ATM-THREAD-1</span>
+                </div>
+                <span class="thread-channel-pill">ATM POOL</span>
+              </div>
+              <div class="thread-item">
+                <div class="thread-info">
+                  <span class="thread-indicator idle"></span>
+                  <span class="thread-name">ATM-THREAD-2</span>
+                </div>
+                <span class="thread-channel-pill">ATM POOL</span>
+              </div>
+              <div class="thread-item">
+                <div class="thread-info">
+                  <span class="thread-indicator idle"></span>
+                  <span class="thread-name">ONLINE-THREAD-1</span>
+                </div>
+                <span class="thread-channel-pill">ONLINE POOL</span>
+              </div>
+              <div class="thread-item">
+                <div class="thread-info">
+                  <span class="thread-indicator idle"></span>
+                  <span class="thread-name">ONLINE-THREAD-2</span>
+                </div>
+                <span class="thread-channel-pill">ONLINE POOL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Recent Transactions Table Section -->
+        <section class="glass-card animate-fade-in-up delay-4">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="card-title">Recent Banking Activity</h3>
+                <p class="card-subtitle">Real-time ledger updates across all channels</p>
+              </div>
+            </div>
+            <a href="transactions.html" class="btn btn-ghost btn-sm">View Full History →</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="glass-table">
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Type</th>
+                  <th>Accounts</th>
+                  <th>Amount</th>
+                  <th>Execution Mode</th>
+                  <th>Status</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="recentTransactionsBody">
+                <!-- Dynamically populated by dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 1: NEW DEPOSIT MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="depositModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">New Cash Deposit</h3>
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      </div>
+      <form id="depositForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Destination Account</label>
+            <select class="glass-select" id="depositAccount" required>
+              <option value="1001">1001 — Alice (₹10,000)</option>
+              <option value="1002">1002 — Bob (₹15,000)</option>
+              <option value="1003">1003 — Charlie (₹20,000)</option>
+              <option value="1004">1004 — David (₹12,000)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Deposit Amount (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="1" class="glass-input" id="depositAmount" placeholder="5000.00" required>
+            </div>
+            <span class="form-hint">Must be greater than zero.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Banking Channel</label>
+            <select class="glass-select" id="depositChannel">
+              <option value="ONLINE">ONLINE (Web & Mobile)</option>
+              <option value="ATM">ATM (Automated Teller)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('depositModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Process Deposit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 2: NEW WITHDRAWAL MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="withdrawModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">New Cash Withdrawal</h3>
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      </div>
+      <form id="withdrawForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Source Account</label>
+            <select class="glass-select" id="withdrawAccount" required>
+              <option value="1001">1001 — Alice (₹10,000)</option>
+              <option value="1002">1002 — Bob (₹15,000)</option>
+              <option value="1003">1003 — Charlie (₹20,000)</option>
+              <option value="1004">1004 — David (₹12,000)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Withdrawal Amount (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="1" class="glass-input" id="withdrawAmount" placeholder="2500.00" required>
+            </div>
+            <span class="form-hint">In SAFE mode, balance check is atomic. In UNSAFE mode, race conditions can occur.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Banking Channel</label>
+            <select class="glass-select" id="withdrawChannel">
+              <option value="ATM">ATM (ATM-THREAD Pool)</option>
+              <option value="ONLINE">ONLINE (ONLINE-THREAD Pool)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('withdrawModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Process Withdrawal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 3: FUND TRANSFER MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="transferModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Inter-Account Fund Transfer</h3>
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      </div>
+      <form id="transferForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Debit Source Account</label>
+            <select class="glass-select" id="transferSource" required>
+              <option value="1001">1001 — Alice (₹10,000)</option>
+              <option value="1002" selected>1002 — Bob (₹15,000)</option>
+              <option value="1003">1003 — Charlie (₹20,000)</option>
+              <option value="1004">1004 — David (₹12,000)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Credit Destination Account</label>
+            <select class="glass-select" id="transferDest" required>
+              <option value="1001" selected>1001 — Alice (₹10,000)</option>
+              <option value="1002">1002 — Bob (₹15,000)</option>
+              <option value="1003">1003 — Charlie (₹20,000)</option>
+              <option value="1004">1004 — David (₹12,000)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Transfer Amount (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="1" class="glass-input" id="transferAmount" placeholder="3000.00" required>
+            </div>
+            <span class="form-hint">In SAFE mode, locks are acquired in sorted order to prevent deadlocks.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Channel</label>
+            <select class="glass-select" id="transferChannel">
+              <option value="ONLINE">ONLINE Channel</option>
+              <option value="ATM">ATM Channel</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('transferModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Execute Transfer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container"></div>
+
+  <!-- Core Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

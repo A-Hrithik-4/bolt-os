@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadlock Lab — BOLT Banking Operations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="apple-glass-bg" aria-hidden="true">
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
+  </div>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">BOLT<span class="accent">.</span></span>
+            <span class="brand-subtitle">Banking & Locking Tech</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div>
+          <div class="nav-group-label">Core Platform</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="nav-label">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="accounts.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span class="nav-label">Accounts</span><span class="badge">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="transactions.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><span class="nav-label">Transactions</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">OS Concurrency Labs</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="simulations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span class="nav-label">Simulations</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="concurrency.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg><span class="nav-label">Concurrency Lab</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="deadlock.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span class="nav-label">Deadlock Lab</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="nav-group-label">System</div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span class="nav-label">Settings</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator"><div class="status-dot-pulse"></div><div class="system-status-text"><strong>System Engine</strong>Java 21 · H2 JPA Active</div></div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+          <div class="breadcrumbs"><span class="crumb-root">BOLT</span><span class="crumb-separator">/</span><span class="crumb-current">Deadlock Lab</span></div>
+        </div>
+        <div class="topbar-right">
+          <div class="mode-indicator-pill safe"><span class="mode-indicator-dot"></span><span class="mode-text">SAFE MODE</span></div>
+          <div class="user-avatar-btn"><div class="avatar-img">HA</div><span class="avatar-name">Hrithik A.</span></div>
+        </div>
+      </header>
+
+      <main class="content-container">
+
+        <!-- Lab Header Banner -->
+        <section class="dashboard-hero animate-fade-in-up" style="margin-bottom: 24px;">
+          <div class="hero-content">
+            <span class="hero-kicker"><span class="kicker-dot"></span>Resource Allocation Visualizer</span>
+            <h1 class="hero-title">Deadlock Dynamics & <span class="accent">Circular Wait</span></h1>
+            <p class="hero-subtitle">
+              Observe how uncoordinated transfers between accounts produce circular wait conditions, and see how consistent lock ordering completely eliminates deadlocks.
+            </p>
+          </div>
+          <div class="hero-controls">
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-unsafe" id="runDeadlockBtn" onclick="triggerDeadlockDemo()">
+                Demonstrate Deadlock
+              </button>
+              <button class="btn btn-safe" id="runPreventionBtn" onclick="triggerDeadlockPreventionDemo()">
+                Demonstrate Prevention
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Deadlock Stage Card -->
+        <section class="glass-card animate-fade-in-up delay-1" style="margin-bottom: 24px;">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="card-icon" style="background: rgba(239, 68, 68, 0.14); color: var(--coral);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div>
+                <h3 class="card-title">Circular Wait Demonstration Stage</h3>
+                <p class="card-subtitle">Thread A: Lock ACC-1001 → Wait ACC-1002 | Thread B: Lock ACC-1002 → Wait ACC-1001</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Deadlock Visualizer Canvas / Stage Area -->
+          <div id="deadlockStage" style="min-height: 220px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: var(--text-muted); padding: 40px;">
+              <div style="font-size: 36px; margin-bottom: 12px;">🔒 ⇄ 🔒</div>
+              <p style="font-size: 14px; max-width: 500px; margin: 0 auto;">
+                Click <strong>"Demonstrate Deadlock"</strong> to simulate two threads competing inversely for account locks with bounded timeout, or <strong>"Demonstrate Prevention"</strong> to see ordered locking in action.
+              </p>
+            </div>
+          </div>
+
+          <!-- Live Event Log -->
+          <div style="margin-top: 24px; border-top: 1px solid rgba(173,187,218,0.3); padding-top: 18px;">
+            <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;">
+              Deadlock Event Log Stream
+            </h4>
+            <div id="deadlockEventLog" style="max-height: 220px; overflow-y: auto; background: rgba(255,255,255,0.6); border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
+              <div style="padding: 16px; text-align: center; color: var(--text-muted); font-size: 12.5px;">Awaiting simulation trigger...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4 Coffman Conditions Cards -->
+        <section class="stats-grid animate-fade-in-up delay-2">
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 6px; font-size: 15px;">1. Mutual Exclusion</h4>
+            <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.55;">
+              At least one resource must be held in a non-shareable mode. In BOLT, each bank account can only be modified by one thread at a time.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 6px; font-size: 15px;">2. Hold and Wait</h4>
+            <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.55;">
+              A thread must be holding at least one resource and waiting to acquire additional resources held by other threads.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h4 style="color: var(--c-sapphire); margin-bottom: 6px; font-size: 15px;">3. No Preemption</h4>
+            <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.55;">
+              Resources cannot be preempted; a resource can be released only voluntarily by the thread holding it after it has completed its task.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h4 style="color: var(--green); margin-bottom: 6px; font-size: 15px;">4. Circular Wait (Prevented)</h4>
+            <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.55;">
+              A closed chain of threads exists such that each thread holds at least one resource needed by the next. <strong>BOLT breaks this via global lock ordering!</strong>
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>
