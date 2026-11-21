@@ -147,8 +147,8 @@
             <span class="mode-text">SAFE MODE</span>
           </div>
           <div class="user-avatar-btn">
-            <div class="avatar-img">MS</div>
-            <span class="avatar-name">Monisha S.</span>
+            <div class="avatar-img">M</div>
+            <span class="avatar-name">Monisha S</span>
           </div>
         </div>
       </header>
@@ -171,7 +171,7 @@
         </section>
 
         <!-- Account Cards Grid -->
-        <section class="stats-grid animate-fade-in-up delay-1" id="accountCardsGrid">
+        <section class="accounts-cards-grid animate-fade-in-up delay-1" id="accountCardsGrid">
           <!-- Dynamically populated or rendered -->
         </section>
 
@@ -349,7 +349,7 @@
       if (!grid) return;
 
       grid.innerHTML = accounts.map(a => `
-        <div class="glass-card glass-card-interactive">
+        <div class="glass-card glass-card-interactive account-card">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
             <span class="badge badge-type" style="font-family: 'JetBrains Mono', monospace;">${a.accountNumber}</span>
             <span class="badge badge-success">${a.accountStatus}</span>
@@ -358,10 +358,10 @@
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--c-brand-dark); margin: 8px 0 16px 0;">
             ${formatCurrency(a.balance)}
           </div>
-          <div style="display: flex; gap: 8px; border-top: 1px solid rgba(148,163,184,0.25); padding-top: 14px;">
-            <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="viewAccountDetails('${a.accountNumber}')">Details</button>
-            <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="quickWithdraw('${a.accountNumber}')">Withdraw</button>
-            <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="quickDeposit('${a.accountNumber}')">Deposit</button>
+          <div class="account-card-actions">
+            <button class="btn btn-ghost btn-sm" onclick="viewAccountDetails('${a.accountNumber}')">Details</button>
+            <button class="btn btn-ghost btn-sm" onclick="quickWithdraw('${a.accountNumber}')">Withdraw</button>
+            <button class="btn btn-primary btn-sm" onclick="quickDeposit('${a.accountNumber}')">Deposit</button>
           </div>
         </div>
       `).join('');

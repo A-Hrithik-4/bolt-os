@@ -50,6 +50,41 @@
   box-shadow: var(--glass-shadow-hover), var(--glass-highlight-hover);
 }
 
+/* Account Cards Responsive Grid & Bounded Action Dock */
+.accounts-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.account-card {
+  padding: 22px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.account-card-actions {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  padding-top: 14px;
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-card-actions .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .card-header {
   display: flex;
   align-items: center;
