@@ -147,8 +147,8 @@
             <span class="mode-text">SAFE MODE</span>
           </div>
           <div class="user-avatar-btn">
-            <div class="avatar-img">HA</div>
-            <span class="avatar-name">Hrithik A.</span>
+            <div class="avatar-img">MS</div>
+            <span class="avatar-name">Monisha S.</span>
           </div>
         </div>
       </header>
@@ -267,6 +267,65 @@
   </div>
 
   <div class="toast-container"></div>
+  <!-- Deposit Modal (hidden by default) -->
+  <div class="modal-overlay hidden" id="depositModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Deposit Funds</h3>
+        <button class="modal-close-btn" onclick="closeModal('depositModal')">✕</button>
+      </div>
+      <form id="depositForm">
+        <div class="modal-body">
+          <input type="hidden" id="depositAccount" value="" />
+          <div class="form-group">
+            <label class="form-label">Account Number</label>
+            <input type="text" class="glass-input" id="depositAccountDisplay" disabled />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Amount (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="0.01" class="glass-input" id="depositAmount" placeholder="e.g. 2500.00" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('depositModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Deposit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!-- Withdraw Modal -->
+  <div class="modal-overlay" id="withdrawModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Withdraw Funds</h3>
+        <button class="modal-close-btn" onclick="closeModal('withdrawModal')">✕</button>
+      </div>
+      <form id="withdrawForm">
+        <div class="modal-body">
+          <input type="hidden" id="withdrawAccount" value="" />
+          <div class="form-group">
+            <label class="form-label">Account Number</label>
+            <input type="text" class="glass-input" id="withdrawAccountDisplay" disabled />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Amount (₹)</label>
+            <div class="currency-input-group">
+              <span class="currency-symbol">₹</span>
+              <input type="number" step="0.01" min="0.01" class="glass-input" id="withdrawAmount" placeholder="e.g. 1000.00" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('withdrawModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Withdraw</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="js/app.js"></script>
   <script src="js/navigation.js"></script>
@@ -301,6 +360,7 @@
           </div>
           <div style="display: flex; gap: 8px; border-top: 1px solid rgba(173,187,218,0.25); padding-top: 14px;">
             <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="viewAccountDetails('${a.accountNumber}')">Details</button>
+            <button class="btn btn-ghost btn-sm" style="flex: 1;" onclick="quickWithdraw('${a.accountNumber}')">Withdraw</button>
             <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="quickDeposit('${a.accountNumber}')">Deposit</button>
           </div>
         </div>
@@ -379,10 +439,18 @@
       `;
       openModal('accountDetailsModal');
     }
-
     function quickDeposit(accountNumber) {
       document.getElementById('depositAccount').value = accountNumber;
+      document.getElementById('depositAccountDisplay').value = accountNumber;
+      document.getElementById('depositAmount').value = '';
       openModal('depositModal');
+    }
+
+    function quickWithdraw(accountNumber) {
+      document.getElementById('withdrawAccount').value = accountNumber;
+      document.getElementById('withdrawAccountDisplay').value = accountNumber;
+      document.getElementById('withdrawAmount').value = '';
+      openModal('withdrawModal');
     }
   </script>
 </body>

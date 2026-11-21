@@ -162,7 +162,8 @@ function initFormHandlers() {
       e.preventDefault();
       const account = document.getElementById('depositAccount').value;
       const amount = document.getElementById('depositAmount').value;
-      const channel = document.getElementById('depositChannel').value;
+      const channelEl = document.getElementById('depositChannel');
+      const channel = channelEl ? channelEl.value : 'ONLINE';
 
       try {
         const txn = await BoltApi.deposit(account, amount, channel);
@@ -183,7 +184,8 @@ function initFormHandlers() {
       e.preventDefault();
       const account = document.getElementById('withdrawAccount').value;
       const amount = document.getElementById('withdrawAmount').value;
-      const channel = document.getElementById('withdrawChannel').value;
+      const channelEl = document.getElementById('withdrawChannel');
+      const channel = channelEl ? channelEl.value : 'ATM';
 
       try {
         const txn = await BoltApi.withdraw(account, amount, channel);
@@ -205,7 +207,8 @@ function initFormHandlers() {
       const source = document.getElementById('transferSource').value;
       const dest = document.getElementById('transferDest').value;
       const amount = document.getElementById('transferAmount').value;
-      const channel = document.getElementById('transferChannel').value;
+      const channelEl = document.getElementById('transferChannel');
+      const channel = channelEl ? channelEl.value : 'ONLINE';
 
       try {
         const txn = await BoltApi.transfer(source, dest, amount, channel);

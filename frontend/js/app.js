@@ -36,9 +36,10 @@ function notifyStateChanged() {
 }
 
 // ============================================================
-// REALISTIC SAMPLE/MOCK DATA (Used when backend is offline)
+// REALISTIC SAMPLE/MOCK DATA (Persisted in sessionStorage across page navigation;
+// resets to default ONLY upon browser refresh/reload)
 // ============================================================
-const MockData = {
+const DEFAULT_MOCK_DATA = {
   accounts: [
     { id: 1, accountNumber: "1001", customerName: "Alice", balance: 10000.00, accountStatus: "ACTIVE", version: 0 },
     { id: 2, accountNumber: "1002", customerName: "Bob", balance: 15000.00, accountStatus: "ACTIVE", version: 0 },
@@ -102,35 +103,45 @@ const MockData = {
       durationMs: 52,
       description: "Race condition withdrawal demo — lost update demonstrated"
     }
-  ],
-  summary: {
-    totalAccounts: 4,
-    totalTransactions: 4,
-    successfulTransactions: 4,
-    failedTransactions: 0,
-    totalDeposits: 1,
-    totalWithdrawals: 2,
-    totalTransfers: 1,
-    totalDepositAmount: 2500.00,
-    totalWithdrawalAmount: 7500.00,
-    totalTransferAmount: 3000.00,
-    currentMode: "SAFE",
-    activeThreadCount: 0,
-    completedThreadCount: 4,
-    averageTransactionDurationMs: 17.5,
-    safeVsUnsafeStats: {
-      safeTransactions: 3,
-      unsafeTransactions: 1,
-      safeSuccessful: 3,
-      unsafeSuccessful: 1,
-      safeFailed: 0,
-      unsafeFailed: 0,
-      safeAvgDurationMs: 6.0,
-      unsafeAvgDurationMs: 52.0
-    }
-  }
+  ]
 };
 
+function initMockData() {
+  try {
+    const navEntries = performance.getEntriesByType('navigation');
+    const isReload = (navEntries && navEntries.length > 0 && navEntries[0].type === 'reload') ||
+                     (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+
+    if (isReload) {
+      sessionStorage.removeItem('bolt_mock_accounts');
+      sessionStorage.removeItem('bolt_mock_transactions');
+    }
+
+    const savedAccounts = sessionStorage.getItem('bolt_mock_accounts');
+    const savedTxns = sessionStorage.getItem('bolt_mock_transactions');
+
+    const accounts = savedAccounts ? JSON.parse(savedAccounts) : JSON.parse(JSON.stringify(DEFAULT_MOCK_DATA.accounts));
+    const transactions = savedTxns ? JSON.parse(savedTxns) : JSON.parse(JSON.stringify(DEFAULT_MOCK_DATA.transactions));
+
+    return { accounts, transactions };
+  } catch (e) {
+    return {
+      accounts: JSON.parse(JSON.stringify(DEFAULT_MOCK_DATA.accounts)),
+      transactions: JSON.parse(JSON.stringify(DEFAULT_MOCK_DATA.transactions))
+    };
+  }
+}
+
+const MockData = initMockData();
+
+function saveMockData() {
+  try {
+    sessionStorage.setItem('bolt_mock_accounts', JSON.stringify(MockData.accounts));
+    sessionStorage.setItem('bolt_mock_transactions', JSON.stringify(MockData.transactions));
+  } catch (e) {
+    console.warn('Could not save to sessionStorage', e);
+  }
+}
 // ============================================================
 // API CLIENT LAYER
 // ============================================================
@@ -191,7 +202,31 @@ const BoltApi = {
         }
       } catch (e) { console.warn('Falling back to local dashboard summary', e); }
     }
-    return MockData.summary;
+
+    const txns = MockData.transactions;
+    const totalDeposits = txns.filter(t => t.transactionType === 'DEPOSIT').length;
+    const totalWithdrawals = txns.filter(t => t.transactionType === 'WITHDRAWAL').length;
+    const totalTransfers = txns.filter(t => t.transactionType === 'TRANSFER').length;
+    const totalDepositAmount = txns.filter(t => t.transactionType === 'DEPOSIT' && t.status === 'SUCCESS').reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+    const totalWithdrawalAmount = txns.filter(t => t.transactionType === 'WITHDRAWAL' && t.status === 'SUCCESS').reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+    const totalTransferAmount = txns.filter(t => t.transactionType === 'TRANSFER' && t.status === 'SUCCESS').reduce((sum, t) => sum + (parseFloat(t.amount) || 0), 0);
+
+    return {
+      totalAccounts: MockData.accounts.length,
+      totalTransactions: txns.length,
+      successfulTransactions: txns.filter(t => t.status === 'SUCCESS').length,
+      failedTransactions: txns.filter(t => t.status === 'FAILED').length,
+      totalDeposits,
+      totalWithdrawals,
+      totalTransfers,
+      totalDepositAmount,
+      totalWithdrawalAmount,
+      totalTransferAmount,
+      currentMode: BoltState.currentMode,
+      activeThreadCount: 0,
+      completedThreadCount: txns.length,
+      averageTransactionDurationMs: 17.5
+    };
   },
 
   // GET Transactions
@@ -274,6 +309,7 @@ const BoltApi = {
       description: `Deposit of ₹${amount} to account ${accountNumber} completed`
     };
     MockData.transactions.unshift(txn);
+    saveMockData();
     return txn;
   },
 
@@ -313,6 +349,7 @@ const BoltApi = {
       description: `Withdrawal of ₹${amount} from account ${accountNumber} completed`
     };
     MockData.transactions.unshift(txn);
+    saveMockData();
     return txn;
   },
 
@@ -356,6 +393,7 @@ const BoltApi = {
       description: `Transfer of ₹${amount} from ${sourceAccountNumber} to ${destinationAccountNumber} completed`
     };
     MockData.transactions.unshift(txn);
+    saveMockData();
     return txn;
   },
 

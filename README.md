@@ -45,6 +45,12 @@ cd backend
 
 # Start the application
 ./mvnw spring-boot:run
+
+### 🔌 Connecting to the Server
+The server runs at **http://localhost:8080**. You can test it with:
+```bash
+curl http://localhost:8080/api/accounts
+```
 ```
 
 The server starts at **http://localhost:8080**
